@@ -1,7 +1,7 @@
 package com.example.smarthomeapp;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+
 import android.os.Bundle;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -9,8 +9,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-
-    Database database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,25 +20,5 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        // Database objekt
-        database = new Database(this);
-        SQLiteDatabase db = database.getWritableDatabase();
-
-        // Legger til et nytt bruker til databasen
-        database.leggTilBruker("Brukernavn1", "Halden_123", "15-10-2002", 3451);
-
-        // Henting av brukerdata fra databasen
-        Cursor cursor = database.hentBrukerdata();
-        if (cursor.moveToFirst()) {
-            do {
-                // Variablene som lagrer informasjonen fra databasen
-                String brukernavn = cursor.getString(cursor.getColumnIndexOrThrow("BRUKERNAVN"));
-                String passord = cursor.getString(cursor.getColumnIndexOrThrow("PASSORD"));
-                String fodselsdato = cursor.getString(cursor.getColumnIndexOrThrow("FODSELSDATO"));
-                int rettigheter = cursor.getInt(cursor.getColumnIndexOrThrow("RETTIGHETER"));
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
     }
 }
