@@ -23,21 +23,23 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Database objekt
+        // Lager database objekt av Database klassen
+        // Lager db objekt av eksisterende database (eller nytt)
         database = new Database(this);
         SQLiteDatabase db = database.getWritableDatabase();
 
-        // Legger til en bruker til databasen
-        database.leggTilBruker("Brukernavn1", "Halden_123", "15-10-2002", 3451);
+        // Legger til en bruker til databasen med parametrene
+        // Brukernavn, Passord, Fødselsdato og Rettigheter
+        database.leggTilBruker("Brukernavn1", "Halden_123", "15-10-2002", "3451");
 
-        // Henter brukerdata fra databasen
+        // Henter brukerdata fra databasen i variablene nedenfor, som da kan brukes
         Cursor cursor = database.hentBrukerdata();
         if (cursor.moveToFirst()) {
             do {
                 String brukernavn = cursor.getString(cursor.getColumnIndexOrThrow("BRUKERNAVN"));
                 String passord = cursor.getString(cursor.getColumnIndexOrThrow("PASSORD"));
                 String fodselsdato = cursor.getString(cursor.getColumnIndexOrThrow("FODSELSDATO"));
-                int rettigheter = cursor.getInt(cursor.getColumnIndexOrThrow("RETTIGHETER"));
+                String rettigheter = cursor.getString(cursor.getColumnIndexOrThrow("RETTIGHETER"));
             } while (cursor.moveToNext());
         }
         cursor.close();
