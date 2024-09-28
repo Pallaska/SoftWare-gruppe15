@@ -33,7 +33,7 @@ public class Database extends SQLiteOpenHelper {
         onCreate(db);
     }
     // Metode for å legge til en bruker til brukertabellen
-    public long leggTilBruker(String brukernavn, String passord, String fodselsdato, int rettigheter) {
+    public long leggTilBruker(String brukernavn, String passord, String fodselsdato, String rettigheter) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();

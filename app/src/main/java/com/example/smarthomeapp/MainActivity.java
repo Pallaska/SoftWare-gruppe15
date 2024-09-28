@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         database.leggTilBruker("Brukernavn1", "Halden_123", "15-10-2002", "3451");
 
         // Henter brukerdata fra databasen i variablene nedenfor, som da kan brukes
+        // Cursor leser en rekke om gangen, så for å vise hele tabellen må det lagres i en liste
         Cursor cursor = database.hentBrukerdata();
         if (cursor.moveToFirst()) {
             do {
