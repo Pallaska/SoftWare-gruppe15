@@ -11,19 +11,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
 
     private EditText usernameEditText, passwordEditText;
     private Button loginButton;
     private Database database;
-
-    // Lists to store data from the cursor
-    private ArrayList<String> brukernavnListe = new ArrayList<>();
-    private ArrayList<String> passordListe = new ArrayList<>();
-    private ArrayList<String> fodselsdatoListe = new ArrayList<>();
-    private ArrayList<String> rettigheterListe = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize the database
         database = new Database(this);
-
-        // Fetch data from the database
-        fetchDataFromDatabase();
 
         // Set login button listener
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -59,37 +48,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Fetch data from the database and store it in the lists
-    private void fetchDataFromDatabase() {
-        SQLiteDatabase db = database.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM BRUKERE", null);
-
-        if (cursor.moveToFirst()) {
-            do {
-                String brukernavn = cursor.getString(cursor.getColumnIndexOrThrow("BRUKERNAVN"));
-                String passord = cursor.getString(cursor.getColumnIndexOrThrow("PASSORD"));
-                String fodselsdato = cursor.getString(cursor.getColumnIndexOrThrow("FODSELSDATO"));
-                String rettigheter = cursor.getString(cursor.getColumnIndexOrThrow("RETTIGHETER"));
-
-                // Add data to corresponding lists
-                brukernavnListe.add(brukernavn);
-                passordListe.add(passord);
-                fodselsdatoListe.add(fodselsdato);
-                rettigheterListe.add(rettigheter);
-
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-    }
-
-    // Validate login by checking if username exists and if password matches
+    // Validate login by checking the database
     private boolean validateLogin(String username, String password) {
-        // Check if the username exists in the list
-        if (brukernavnListe.contains(username)) {
-            // Get the index of the username and check if the password at the same index matches
-            int index = brukernavnListe.indexOf(username);
-            return passordListe.get(index).equals(password);
-        }
-        return false;
+        SQLiteDatabase db = database.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM BRUKERE WHERE BRUKERNAVN=? AND PASSORD=?", new String[]{username, password});
+
+        boolean isValid = cursor.getCount() > 0;
+        cursor.close();
+        return isValid;
     }
 }
