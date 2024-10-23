@@ -22,6 +22,8 @@ import com.example.smarthomeapp.model.User;
 import com.example.smarthomeapp.integrering.skanning.BluetoothSkanning;
 import com.example.smarthomeapp.integrering.skanning.WiFiSkanning;
 import com.example.smarthomeapp.integrering.skanning.mDNSSkanning;
+import com.example.smarthomeapp.RegisterActivity;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -100,11 +102,12 @@ public class MainActivity extends AppCompatActivity {
         // For innlogging
         authenticate = new Authenticate();
 
-        // Tekstfelt og innloggingsknapp. ID-er skal være like som i xml-filen
+        // Tekstfelt. ID-er skal være like som i xml-filen
         EditText usernameField = findViewById(R.id.username);
         EditText passwordField = findViewById(R.id.password);
-        Button loginButton = findViewById(R.id.loginButton);
 
+        // Innloggingsknapp
+        Button loginButton = findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,6 +121,16 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(MainActivity.this, "Feil brukernavn eller passord", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        // Knapp for å navigere til RegisterActivity
+        Button registerButton = findViewById(R.id.registerButton);
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
     }
