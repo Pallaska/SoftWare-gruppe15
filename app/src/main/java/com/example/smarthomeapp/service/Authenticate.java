@@ -12,6 +12,16 @@ public class Authenticate {
         users.put("bruker2", "passord2");
     }
 
+    //
+    public HashMap<String, String> getUsers() {
+        return users;
+    }
+
+    // Metode for å legge til nye brukere
+    public void addUser(User user) {
+        users.put(user.getUsername(), user.getPassword());
+    }
+
     // Metode for å validere innlogging
     public boolean validateLogin(String username, String password) {
         if (users.containsKey(username)) {
