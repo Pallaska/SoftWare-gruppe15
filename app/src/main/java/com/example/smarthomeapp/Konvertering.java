@@ -7,6 +7,8 @@ import com.google.gson.JsonObject;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import org.mindrot.jbcrypt.BCrypt;
+
 
 public class Konvertering {
     private static Gson G = new GsonBuilder().setPrettyPrinting().create();
@@ -43,16 +45,21 @@ public class Konvertering {
     public void leggTilBruker(User nyBruker) {
         try {
             List<User> brukereList = hentBrukere();
+
+            // Hash passordet
+            String hashedPassword = BCrypt.hashpw(nyBruker.getPassord(), BCrypt.gensalt());
+            nyBruker.setPassord(hashedPassword); // linket med setPassord-metoden er lagt til i User.java
+
             brukereList.add(nyBruker);
 
-            // Konverterer listen tilbake til en JSON array
+            // Konverter listen tilbake til JSON-array
             JsonArray oppdatertJsonArray = new JsonArray();
             for (User bruker : brukereList) {
                 JsonObject brukerJson = G.toJsonTree(bruker).getAsJsonObject();
                 oppdatertJsonArray.add(brukerJson);
             }
 
-            // Skriver den oppdaterte informasjonen til JSON filen
+            // Skriv oppdatert info til JSON fil
             JsonObject jsonObject = new JsonObject();
             jsonObject.add("brukere", oppdatertJsonArray);
 
@@ -63,4 +70,5 @@ public class Konvertering {
             e.printStackTrace();
         }
     }
+
 }
