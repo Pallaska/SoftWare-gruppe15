@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import com.example.smarthomeapp.model.User;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,7 +18,17 @@ public class MainActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
-            // Test kommentar
         });
+
+        // Eksempel på bruk av JSON database
+
+        // Lag objekter av User og Konvertering
+        User eksempelBruker = new User(1, "A", "B", "C", "D", "E", "F", 2);
+        Konvertering K = new Konvertering();
+
+        // Returnerer en liste med brukere fra JSON-filen
+        K.hentBrukere();
+        // Legger til et bruker objekt til JSON-filen
+        K.leggTilBruker(eksempelBruker);
     }
 }
