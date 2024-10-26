@@ -17,7 +17,10 @@ public class MainActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
-            // Test kommentar
         });
+        // Når jeg har legger til funksjonalitet for enhetsskanning så skal det
+        // (BluetoothSkanning og WiFiSkanning) kunne brukes til å finne enheter
+        // som da blir valgt ut ved bruk av UI, og da kan enheten når den er i
+        // form av et objekt brukes i BluetoothEnhet/WiFiEnhet til å sende kommandoer
     }
 }
