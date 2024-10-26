@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import android.content.Intent;
 import com.example.smarthomeapp.RegisterActivity;
 
 
@@ -27,8 +28,13 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        // For innlogging
-        authenticate = new Authenticate();
+        // For innlogging. Stopper utførelse av videre kode dersom noe går galt
+        try {
+            authenticate = new Authenticate(this);
+        } catch (Exception e) {
+            Toast.makeText(this, "Feil ved lasting av brukerdata", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         // Tekstfelt. ID-er skal være like som i xml-filen
         EditText usernameField = findViewById(R.id.username);
@@ -37,15 +43,19 @@ public class MainActivity extends AppCompatActivity {
         // Innloggingsknapp
         Button loginButton = findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                String username = usernameField.getText().toString();  // Henter brukernavn
-                String password = passwordField.getText().toString();  // Henter passord
+                String username = usernameField.getText().toString().trim();
+                String password = passwordField.getText().toString().trim();
 
                 // Sjekker om brukernavn og passord er riktig
                 if (authenticate.validateLogin(username, password)) {
                     Toast.makeText(MainActivity.this, "Innlogging vellykket!", Toast.LENGTH_SHORT).show();
-                    // Her skal det legges kode for å navigere til neste skjerm
+                    // Navigerer til neste skjerm. HomeActivity er skjermen som man kommer til når man logger inn
+                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
                 } else {
                     Toast.makeText(MainActivity.this, "Feil brukernavn eller passord", Toast.LENGTH_SHORT).show();
                 }
