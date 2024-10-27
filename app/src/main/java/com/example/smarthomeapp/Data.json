@@ -100,5 +100,47 @@
       "email": "tingeling@live.no",
       "telefon": 13579135
     }
+  ],
+  "enheter":  [
+    {
+      "enhetID": 1,
+      "enhetNavn": "TV"
+    },
+    {
+      "enhetID": 2,
+      "enhetNavn": "Vaskemaskin"
+    },
+    {
+      "enhetID": 3,
+      "enhetNavn": "Gressklipper"
+    },
+    {
+      "enhetID": 4,
+      "enhetNavn": "Stuelys"
+    },
+    {
+      "enhetID": 5,
+      "enhetNavn": "Baderomslys"
+    },
+    {
+      "enhetID": 6,
+      "enhetNavn": "Gulvvarmer stue"
+    },
+    {
+      "enhetID": 7,
+      "enhetNavn": "Soverom TV"
+    },
+    {
+      "enhetID": 8,
+      "enhetNavn": "Hoveddør lås"
+    },
+    {
+      "enhetID": 9,
+      "enhetNavn": "Ringeklokke"
+    },
+    {
+      "enhetID": 10,
+      "enhetNavn": "Støvsuger"
+    }
   ]
 }
