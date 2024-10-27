@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import com.example.smarthomeapp.JSON.Konvertering;
 import com.example.smarthomeapp.model.Enhet;
 import com.example.smarthomeapp.model.User;
 

@@ -1,4 +1,4 @@
-package com.example.smarthomeapp;
+package com.example.smarthomeapp.JSON;
 import com.example.smarthomeapp.model.Enhet;
 import com.example.smarthomeapp.model.User;
 import com.google.gson.Gson;
