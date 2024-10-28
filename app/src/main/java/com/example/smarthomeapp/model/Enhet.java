@@ -23,6 +23,6 @@ public class Enhet {
 
     @Override
     public String toString() {
-        return "Bruker{" + "enhetID=" + enhetID + ", enhetNavn=" + enhetNavn + '}';
+        return "Enhet{" + "enhetID=" + enhetID + ", enhetNavn=" + enhetNavn + '}';
     }
 }
