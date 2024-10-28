@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import com.example.smarthomeapp.JSON.LoggKonvertering;
+import com.example.smarthomeapp.model.Handling;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,5 +20,11 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        // Oppretter en handling med brukerID og skriver til logg,
+        // så lagres det til JSON-filen ved bruk av LoggKonvertering
+        // BrukerID skal egentlig være dynamisk men det blir etter at login er ferdig
+        // Tiden blir notert automatisk i LoggKonvertering konstruktøren
+        Handling handling_A = new Handling(1, "MainActivity");
+        new LoggKonvertering().leggTilHandling(handling_A);
     }
 }
