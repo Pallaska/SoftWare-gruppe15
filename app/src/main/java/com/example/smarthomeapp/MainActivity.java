@@ -1,10 +1,15 @@
 package com.example.smarthomeapp;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import com.example.smarthomeapp.integrering.skanning.BluetoothSkanning;
+import com.example.smarthomeapp.integrering.skanning.WiFiSkanning;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,9 +23,29 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        // Når jeg har legger til funksjonalitet for enhetsskanning så skal det
-        // (BluetoothSkanning og WiFiSkanning) kunne brukes til å finne enheter
-        // som da blir valgt ut ved bruk av UI, og da kan enheten når den er i
-        // form av et objekt brukes i BluetoothEnhet/WiFiEnhet til å sende kommandoer
+
+        // Referanse til UI element i activity_main
+        Button buttonWifi = findViewById(R.id.button_wifi);
+        // Setter opp kode for håndtering av det å trykke på knappen
+        // og da brukes en Intent objekt til å starte WiFi skanning
+        buttonWifi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, WiFiSkanning.class);
+                startActivity(intent);
+            }
+        });
+
+        // Referanse til UI element i activity_main
+        Button buttonBluetooth = findViewById(R.id.button_bluetooth);
+        // Setter opp kode for håndtering av det å trykke på knappen
+        // og da brukes en Intent objekt til å starte Bluetooth skanning
+        buttonBluetooth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, BluetoothSkanning.class);
+                startActivity(intent);
+            }
+        });
     }
 }
