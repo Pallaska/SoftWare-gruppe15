@@ -1,19 +1,131 @@
-a<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#B3E7FD"
+        tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <!-- Logo -->
+        <TextView
+                android:id="@+id/logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Smart Connect"
+                android:textSize="33sp"
+                android:fontFamily="@font/poppins_extrabold"
+                android:textColor="#000000"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:layout_constraintBottom_toTopOf="@+id/cardView"
+                android:layout_marginBottom="0dp" />
+
+        <!-- CardView container med runde hjørner -->
+        <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp"
+                android:backgroundTint="#FFFFFF"
+                app:layout_constraintTop_toBottomOf="@+id/logo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <!-- Statusmelding -->
+                        <TextView
+                                android:id="@+id/statusMessage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Du er logget ut."
+                                android:textSize="20sp"
+                                android:textColor="#000000"
+                                android:drawableStart="@drawable/lock_icon"
+                                android:drawablePadding="8dp"
+                                android:fontFamily="@font/poppins_bold"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginBottom="16dp" />
+
+                        <!-- Brukernavn Input -->
+                        <EditText
+                                android:id="@+id/username"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Brukernavn"
+                                android:background="@drawable/rounded_stroke"
+                                android:singleLine="true"
+                                android:backgroundTint="#000000"
+                                android:fontFamily="@font/poppins_bold"
+                                android:layout_marginBottom="16dp" />
+
+                        <!-- Passord Input -->
+                        <EditText
+                                android:id="@+id/password"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Passord"
+                                android:background="@drawable/rounded_stroke"
+                                android:singleLine="true"
+                                android:inputType="textPassword"
+                                android:backgroundTint="#000000"
+                                android:fontFamily="@font/poppins_bold"
+                                android:layout_marginBottom="16dp" />
+
+                        <!-- Logg inn Knapp -->
+                        <androidx.appcompat.widget.AppCompatButton
+                                android:id="@+id/loginButton"
+                                android:layout_width="150dp"
+                                android:layout_height="48dp"
+                                android:text="Logg på"
+                                android:textSize="16sp"
+                                android:textAllCaps="false"
+                                android:fontFamily="@font/poppins_bold"
+                                android:textColor="#000000"
+                                android:background="@drawable/button_stroke"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginBottom="16dp"/>
+
+                        <!-- Registrer ny bruker tekst -->
+                        <TextView
+                                android:id="@+id/registerLink"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Registrer ny bruker"
+                                android:fontFamily="@font/poppins_bold"
+                                android:textSize="16sp"
+                                android:textColor="#000000"
+                                android:layout_gravity="center_horizontal"
+                        />
+
+                </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Footer -->
+        <TextView
+                android:id="@+id/footer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Smart Connect AS"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:fontFamily="@font/poppins_bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginBottom="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

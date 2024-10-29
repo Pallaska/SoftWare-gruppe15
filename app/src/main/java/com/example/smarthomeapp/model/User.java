@@ -1,7 +1,7 @@
 package com.example.smarthomeapp;
 
 // Klasse for brukere
-private class User {
+public class User {
     private String username;
     private String password;
 
