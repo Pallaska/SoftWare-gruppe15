@@ -1,5 +1,8 @@
 package com.example.smarthomeapp;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -11,6 +14,10 @@ import com.example.smarthomeapp.model.Enhet;
 import com.example.smarthomeapp.model.Handling;
 import com.example.smarthomeapp.model.User;
 import com.example.smarthomeapp.chatbot.ChatClientAPI;
+import com.example.smarthomeapp.integrering.skanning.BluetoothSkanning;
+import com.example.smarthomeapp.integrering.skanning.WiFiSkanning;
+import com.example.smarthomeapp.integrering.skanning.mDNSSkanning;
+import com.example.smarthomeapp.integrering.skanning.mDNSSkanning;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
             User eksempelBruker = new User(1, "A", "B", "C", "D", "E", "F", 2);
             Enhet eksempelEnhet = new Enhet(1, "A");
             DataKonvertering K = new DataKonvertering();
-
             // Returnerer en liste med brukere og enheter fra JSON-filen
             K.hentBrukere();
             K.hentEnheter();
@@ -50,6 +56,34 @@ public class MainActivity extends AppCompatActivity {
             chatClientAPI = new ChatClientAPI();
             String melding = "Hei";
             chatClientAPI.sendMelding(melding);
+
+            // mDNS objekt som søker etter enheter med tjenestetype EWELINK
+            // og med et tidsavbrudd på 5 sekunder
+            mDNSSkanning mdnsSkanning = new mDNSSkanning();
+            mdnsSkanning.startEnhetsskanning("_ewelink._tcp.local.", 5);
+
+            // Referanse til UI element i activity_main
+            Button buttonWifi = findViewById(R.id.button_wifi);
+            // Setter opp kode for håndtering av det å trykke på knappen
+            // og da brukes en Intent objekt til å starte WiFi skanning
+            buttonWifi.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this, WiFiSkanning.class);
+                    startActivity(intent);
+                }
+            });
+            // Referanse til UI element i activity_main
+            Button buttonBluetooth = findViewById(R.id.button_bluetooth);
+            // Setter opp kode for håndtering av det å trykke på knappen
+            // og da brukes en Intent objekt til å starte Bluetooth skanning
+            buttonBluetooth.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this, BluetoothSkanning.class);
+                    startActivity(intent);
+                }
+            });
         });
     }
 }

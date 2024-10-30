@@ -40,6 +40,7 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.okhttp3)
     implementation(libs.androidxCore)
+    implementation(libs.jmdns)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
