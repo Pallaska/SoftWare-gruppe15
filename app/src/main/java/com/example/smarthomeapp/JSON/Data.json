@@ -1,0 +1,146 @@
+{
+  "brukere": [
+    {
+      "brukerID": 400,
+      "brukernavn": "Hans",
+      "passord": "passord123",
+      "fodselsdato": "15102000",
+      "rettigheter": "12345",
+      "adresse": "basestien 22",
+      "email": "testmail@live.no",
+      "telefon": 34724923
+    },
+    {
+      "brukerID": 401,
+      "brukernavn": "Mari",
+      "passord": "passord123",
+      "fodselsdato": "15102000",
+      "rettigheter": "12345",
+      "adresse": "rosestien 21",
+      "email": "Marirose@live.no",
+      "telefon": 12345678
+    },
+    {
+      "brukerID": 402,
+      "brukernavn": "Einar",
+      "passord": "passord123",
+      "fodselsdato": "15102000",
+      "rettigheter": "12345",
+      "adresse": "poppystien 20",
+      "email": "Einarpoppy@live.no",
+      "telefon": 34567890
+    },
+    {
+      "brukerID": 403,
+      "brukernavn": "Ole Edvard",
+      "passord": "passord123",
+      "fodselsdato": "15102000",
+      "rettigheter": "12345",
+      "adresse": "hakkebakkeskogen 10",
+      "email": "ole.ed@live.no",
+      "telefon": 45678901
+    },
+    {
+      "brukerID": 404,
+      "brukernavn": "Ida",
+      "passord": "passord123",
+      "fodselsdato": "15102000",
+      "rettigheter": "12345",
+      "adresse": "hundremeterskogen 4",
+      "email": "ida.hundre@live.no",
+      "telefon": 56789012
+    },
+    {
+      "brukerID": 405,
+      "brukernavn": "Mikke",
+      "passord": "passord123",
+      "fodselsdato": "15102000",
+      "rettigheter": "12345",
+      "adresse": "plutoveien 3",
+      "email": "mikke.pluto@live.no",
+      "telefon": 67890123
+    },
+    {
+      "brukerID": 406,
+      "brukernavn": "Minnie",
+      "passord": "passord123",
+      "fodselsdato": "15102000",
+      "rettigheter": "12345",
+      "adresse": "minniestien 9",
+      "email": "minnie.stien@live.no",
+      "telefon": 78901234
+    },
+    {
+      "brukerID": 407,
+      "brukernavn": "Donald",
+      "passord": "passord123",
+      "fodselsdato": "15102000",
+      "rettigheter": "12345",
+      "adresse": "donaldstien 1",
+      "email": "donald@live.no",
+      "telefon": 89012345
+    },
+    {
+      "brukerID": 408,
+      "brukernavn": "Dolly",
+      "passord": "passord123",
+      "fodselsdato": "15102000",
+      "rettigheter": "12345",
+      "adresse": "dollystien 81",
+      "email": "dolly@live.no",
+      "telefon": 90123456
+    },
+    {
+      "brukerID": 409,
+      "brukernavn": "Tingeling",
+      "passord": "passord123",
+      "fodselsdato": "15102000",
+      "rettigheter": "12345",
+      "adresse": "drÃ¸mmestien 44",
+      "email": "tingeling@live.no",
+      "telefon": 13579135
+    }
+  ],
+  "enheter":  [
+    {
+      "enhetID": 1,
+      "enhetNavn": "TV"
+    },
+    {
+      "enhetID": 2,
+      "enhetNavn": "Vaskemaskin"
+    },
+    {
+      "enhetID": 3,
+      "enhetNavn": "Gressklipper"
+    },
+    {
+      "enhetID": 4,
+      "enhetNavn": "Stuelys"
+    },
+    {
+      "enhetID": 5,
+      "enhetNavn": "Baderomslys"
+    },
+    {
+      "enhetID": 6,
+      "enhetNavn": "Gulvvarmer stue"
+    },
+    {
+      "enhetID": 7,
+      "enhetNavn": "Soverom TV"
+    },
+    {
+      "enhetID": 8,
+      "enhetNavn": "Hoveddør lås"
+    },
+    {
+      "enhetID": 9,
+      "enhetNavn": "Ringeklokke"
+    },
+    {
+      "enhetID": 10,
+      "enhetNavn": "Støvsuger"
+    }
+  ]
+}
