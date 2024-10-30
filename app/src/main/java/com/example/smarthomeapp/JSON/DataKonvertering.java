@@ -1,4 +1,4 @@
-package com.example.smarthomeapp;
+package com.example.smarthomeapp.JSON;
 import com.example.smarthomeapp.model.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -10,7 +10,7 @@ import java.util.List;
 import org.mindrot.jbcrypt.BCrypt;
 
 
-public class Konvertering {
+public class DataKonvertering {
     private static Gson G = new GsonBuilder().setPrettyPrinting().create();
 
     // Metode som leser brukere fra JSON og returnerer en liste med bruker objekter

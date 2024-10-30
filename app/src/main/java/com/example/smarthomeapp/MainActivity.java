@@ -1,18 +1,18 @@
 package com.example.smarthomeapp;
-
 import android.os.Bundle;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import com.example.smarthomeapp.JSON.DataKonvertering;
 import com.example.smarthomeapp.model.User;
 import java.util.List;
 import org.mindrot.jbcrypt.BCrypt;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Konvertering K;
+    private DataKonvertering K;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Initialiserer Konvertering-klassen for å håndtere JSON-database
-        K = new Konvertering();
+        K = new DataKonvertering();
 
         // Eksempel på å legge til en ny bruker med hashet passord
         User eksempelBruker = new User(1, "brukernavn", "passord", "01-01-2000", "rettighet", "email@example.com", "adresse", 12345678);
