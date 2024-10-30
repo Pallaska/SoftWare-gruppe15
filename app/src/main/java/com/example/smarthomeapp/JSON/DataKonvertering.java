@@ -9,7 +9,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Konvertering {
+public class DataKonvertering {
     private static Gson G = new GsonBuilder().setPrettyPrinting().create();
 
     // Metode som leser brukere fra JSON og returnerer en liste med bruker objekter

@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import com.example.smarthomeapp.JSON.Konvertering;
+import com.example.smarthomeapp.JSON.DataKonvertering;
 import com.example.smarthomeapp.model.Enhet;
 import com.example.smarthomeapp.model.User;
 
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         // Lag objekter av User, Enhet og Konvertering
         User eksempelBruker = new User(1, "A", "B", "C", "D", "E", "F", 2);
         Enhet eksempelEnhet = new Enhet(1, "A");
-        Konvertering K = new Konvertering();
+        DataKonvertering K = new DataKonvertering();
 
         // Returnerer en liste med brukere og enheter fra JSON-filen
         K.hentBrukere();
