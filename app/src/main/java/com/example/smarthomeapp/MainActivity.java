@@ -10,6 +10,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import com.example.smarthomeapp.integrering.skanning.BluetoothSkanning;
 import com.example.smarthomeapp.integrering.skanning.WiFiSkanning;
+import com.example.smarthomeapp.integrering.skanning.mDNS;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +24,11 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        // mDNS objekt som søker etter enheter med tjenestetype EWELINK
+        // og med et tidsavbrudd på 5 sekunder
+        mDNS mdns = new mDNS();
+        mdns.startEnhetsskanning("_ewelink._tcp.local.", 5);
 
         // Referanse til UI element i activity_main
         Button buttonWifi = findViewById(R.id.button_wifi);
