@@ -1,4 +1,4 @@
-package com.example.smarthomeapp;
+package com.example.smarthomeapp.model;
 
 // Klasse for å lage bruker
 public class User {
@@ -22,11 +22,67 @@ public class User {
         this.telefon = telefon;
     }
 
+    public int getBrukerID() {
+        return brukerID;
+    }
+
+    public void setBrukerID(int brukerID) {
+        this.brukerID = brukerID;
+    }
+
     public String getBrukernavn() {
         return brukernavn;
     }
 
+    public void setBrukernavn(String brukernavn) {
+        this.brukernavn = brukernavn;
+    }
+
     public String getPassord() {
         return passord;
+    }
+
+    public void setPassord(String passord) {
+        this.passord = passord;
+    }
+
+    public String getFodselsdato() {
+        return fodselsdato;
+    }
+
+    public void setFodselsdato(String fodselsdato) {
+        this.fodselsdato = fodselsdato;
+    }
+
+    public String getRettigheter() {
+        return rettigheter;
+    }
+
+    public void setRettigheter(String rettigheter) {
+        this.rettigheter = rettigheter;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getTelefon() {
+        return telefon;
+    }
+
+    public void setTelefon(int telefon) {
+        this.telefon = telefon;
     }
 }

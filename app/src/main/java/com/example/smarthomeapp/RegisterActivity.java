@@ -6,6 +6,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.smarthomeapp.service.Authenticate;
+import com.example.smarthomeapp.model.User;
+
+import java.io.IOException;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -19,7 +23,11 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         // Laster inn brukere fra json
-        authenticate = new Authenticate(this);
+        try {
+            authenticate = new Authenticate(this);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         // Tekstfelt og knapp for registrering
         EditText usernameField = findViewById(R.id.username);
