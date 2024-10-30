@@ -2,7 +2,3 @@
 plugins {
     alias(libs.plugins.android.application) apply false
 }
-
-dependencies {
-    implementation 'org.mindrot:jbcrypt:0.4'
-}
