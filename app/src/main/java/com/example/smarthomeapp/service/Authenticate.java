@@ -1,22 +1,70 @@
 package com.example.smarthomeapp;
 
-import java.util.HashMap;
+import android.content.Context;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
+// Klasse for autentisering, lasting av brukere fra json og validering
 public class Authenticate {
-    // Kun midlertidig for å vise funksjonalitet, skal byttes ut med databasen
-    private HashMap<String, String> users = new HashMap<>();
+    // Liste som lagrer data om brukere når de er lastet fra json
+    private List<User> users = new ArrayList<>();
 
-    // Kun midlertidig for å vise funksjonalitet, skal hentes fra databasen senere
-    public Authenticate() {
-        users.put("bruker1", "passord1");
-        users.put("bruker2", "passord2");
+    // Laster brukerinformasjonen fra json filen
+    public Authenticate(Context context) {
+        loadUsersFromJson(context);
     }
 
-    // Metode for å validere innlogging
+    // Laster brukere fra json og konverterer fra json-data til java-objekter
+    private void loadUsersFromJson(Context context) {
+        try {
+            // Åpner json
+            InputStream inputStream = context.getAssets().open("data.json");
+            InputStreamReader reader = new InputStreamReader(inputStream);
+            Gson gson = new Gson();
+
+            // Definerer type for brukerliste
+            Type userListType = new TypeToken<DataContainer>() {}.getType();
+
+            // Konverterer json-data til DataContainer-objekt
+            DataContainer dataContainer = gson.fromJson(reader, userListType);
+
+            // Legger til brukere i listen
+            if (dataContainer != null && dataContainer.brukere != null) {
+                users.addAll(dataContainer.brukere);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Få listen over brukere
+    public List<User> getUsers() {
+        return users;
+    }
+
+    // Legge til bruker
+    public void addUser(User user) {
+        users.add(user);
+    }
+
+    // Metode for å validere innlogging. Returnerer true om brukernavn og passord matcher
     public boolean validateLogin(String username, String password) {
-        if (users.containsKey(username)) {
-            return users.get(username).equals(password);
+        for (User user : users) {
+            if (user.getBrukernavn().equals(username) && user.getPassord().equals(password)) {
+                return true;
+            }
         }
         return false;
+    }
+
+    // Klasse for å holde json-data
+    private static class DataContainer {
+        List<User> brukere;
     }
 }
