@@ -13,10 +13,8 @@ import com.example.smarthomeapp.JSON.LoggKonvertering;
 import com.example.smarthomeapp.model.Enhet;
 import com.example.smarthomeapp.model.Handling;
 import com.example.smarthomeapp.model.User;
-import com.example.smarthomeapp.chatbot.ChatClientAPI;
 import com.example.smarthomeapp.integrering.skanning.BluetoothSkanning;
 import com.example.smarthomeapp.integrering.skanning.WiFiSkanning;
-import com.example.smarthomeapp.integrering.skanning.mDNSSkanning;
 import com.example.smarthomeapp.integrering.skanning.mDNSSkanning;
 
 public class MainActivity extends AppCompatActivity {
