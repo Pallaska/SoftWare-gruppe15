@@ -8,6 +8,8 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.smarthomeapp.JSON.DataKonvertering;
 import com.example.smarthomeapp.model.Enhet;
 import com.example.smarthomeapp.model.User;
+import com.example.smarthomeapp.JSON.LoggKonvertering;
+import com.example.smarthomeapp.model.Handling;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,8 +24,14 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Eksempel på bruk av JSON database
+        // Oppretter en handling med brukerID og skriver til logg,
+        // så lagres det til JSON-filen ved bruk av LoggKonvertering
+        // BrukerID skal egentlig være dynamisk men det blir etter at login er ferdig
+        // Tiden blir notert automatisk i LoggKonvertering konstruktøren
+        Handling handling_A = new Handling(1, "MainActivity");
+        new LoggKonvertering().leggTilHandling(handling_A);
 
+        // Eksempel på bruk av JSON database
         // Lag objekter av User, Enhet og Konvertering
         User eksempelBruker = new User(1, "A", "B", "C", "D", "E", "F", 2);
         Enhet eksempelEnhet = new Enhet(1, "A");
