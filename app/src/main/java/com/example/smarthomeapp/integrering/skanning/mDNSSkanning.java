@@ -5,7 +5,7 @@ import javax.jmdns.ServiceListener;
 import java.io.IOException;
 import java.net.InetAddress;
 
-public class mDNS {
+public class mDNSSkanning {
 
     private JmDNS jmdns;
 
