@@ -1,4 +1,4 @@
-package com.example.smarthomeapp;
+package com.example.smarthomeapp.service;
 
 import android.content.Context;
 import com.google.gson.Gson;
@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import com.example.smarthomeapp.model.User;
 
 // Klasse for autentisering, lasting av brukere fra json og validering
 public class Authenticate {
@@ -16,12 +17,12 @@ public class Authenticate {
     private List<User> users = new ArrayList<>();
 
     // Laster brukerinformasjonen fra json filen
-    public Authenticate(Context context) {
+    public Authenticate(Context context) throws IOException {
         loadUsersFromJson(context);
     }
 
     // Laster brukere fra json og konverterer fra json-data til java-objekter
-    private void loadUsersFromJson(Context context) {
+    private void loadUsersFromJson(Context context) throws IOException{
         try {
             // Åpner json
             InputStream inputStream = context.getAssets().open("data.json");
@@ -64,7 +65,7 @@ public class Authenticate {
     }
 
     // Klasse for å holde json-data
-    private static class DataContainer {
+    public static class DataContainer {
         List<User> brukere;
     }
 }
