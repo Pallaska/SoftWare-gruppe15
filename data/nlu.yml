@@ -1,0 +1,64 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hei
+    - hallo
+    - heisånn
+    - hva skjer
+    - god morgen
+    - god dag
+    - god kveld
+
+- intent: goodbye
+  examples: |
+    - ha det
+    - vi ses
+    - ses senere
+    - snakkes
+    - ha en god dag
+    - ha en god kveld
+
+- intent: affirm
+  examples: |
+    - ja
+    - riktig
+    - høres bra ut
+    - korrekt
+    - perfekt
+    - ser bra ut
+
+- intent: deny
+  examples: |
+    - nei
+    - feil
+    - uriktig
+    - ikke riktig
+    - ukorrekt
+    - ser feil ut
+    - ikke bra
+
+- intent: mood_great
+  examples: |
+    - perfekt
+    - fantastisk
+    - vindunderlig
+    - topp
+    - herlig
+
+- intent: mood_unhappy
+  examples: |
+    - elendig
+    - ikke bra
+    - dårlig
+    - trist
+    - uheldig
+
+- intent: bot_challenge
+  examples: |
+    - er du en bot?
+    - snakker jeg med et menneske?
+    - er du et menneske?
+    - forstår du meg?
+    - er du kunstig intelligens?
