@@ -57,6 +57,11 @@ public class User {
         return telefon;
     }
 
+    // for å hashet passordet
+    public void setPassord(String passord) {
+        this.passord = passord;
+    }
+
     @Override
     public String toString() {
         return "Bruker{" +

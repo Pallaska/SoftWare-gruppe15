@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 import com.example.smarthomeapp.json.DataKonvertering;
 import com.example.smarthomeapp.json.LoggKonvertering;
 import com.example.smarthomeapp.model.Enhet;
@@ -22,8 +23,9 @@ import com.example.smarthomeapp.integrering.skanning.WiFiSkanning;
 import com.example.smarthomeapp.integrering.skanning.mDNSSkanning;
 import android.content.Intent;
 import com.example.smarthomeapp.service.Authenticate;
-
+import org.mindrot.jbcrypt.BCrypt;
 import java.io.IOException;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
