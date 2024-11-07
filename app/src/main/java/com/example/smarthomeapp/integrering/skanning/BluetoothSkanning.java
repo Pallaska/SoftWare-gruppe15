@@ -10,12 +10,14 @@ import android.content.pm.PackageManager;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
 import androidx.core.app.ActivityCompat;
 import com.example.smarthomeapp.R;
+import java.util.List;
+
 public class BluetoothSkanning extends AppCompatActivity {
 
     private BluetoothAdapter bluetoothAdapter;
+    private List<BluetoothDevice> resultater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,15 +39,16 @@ public class BluetoothSkanning extends AppCompatActivity {
     }
     private void startBluetoothSkanning() {
         if (bluetoothAdapter != null && bluetoothAdapter.isEnabled()) {
+
             // Håndterer tilfellet at BLUETOOTH_SCAN tillatelsen ikke ble gitt
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "Du mangler tillatelse", Toast.LENGTH_SHORT).show();
+                System.out.println("Du mangler BLUETOOTH_SCAN tillatelsen");
                 return;
             }
             // Søk etter Bluetooth enheter
             bluetoothAdapter.startDiscovery();
         } else {
-            Toast.makeText(this, "Bluetooth er ikke aktivert/tilgjengelig", Toast.LENGTH_SHORT).show();
+            System.out.println("Bluetooth er ikke aktivert/tilgjengelig");
         }
     }
     private final BroadcastReceiver bluetoothReceiver = new BroadcastReceiver() {
@@ -54,20 +57,22 @@ public class BluetoothSkanning extends AppCompatActivity {
             String action = intent.getAction();
             if (BluetoothDevice.ACTION_FOUND.equals(action)) {
                 BluetoothDevice enhet = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+
                 // Sjekker om enheten er en Bluetooth enhet, siden flere ting kan hende
                 // som fører til at Bluetooth enheten fra en intent ikke blir lagt til ordentlig
                 if (enhet != null) {
                     // Håndterer tilfellet at BLUETOOTH_CONNECT tillatelsen ikke ble gitt
                     if (ActivityCompat.checkSelfPermission(context, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                        Toast.makeText(context, "Du mangler tillatelse", Toast.LENGTH_SHORT).show();
+                        System.out.println("Du mangler BLUETOOTH_CONNECT tillatelsen");
                         return;
                     }
-                    // Presenterer Bluetooth enheter som ble funnet
-                    Toast.makeText(context, "Bluetooth enheter som ble funnet: " + enhet.getName(), Toast.LENGTH_SHORT).show();
+                    // Lagrer Bluetooth enheter som ble funnet
+                    resultater.add(enhet);
                 }
             }
         }
     };
+
     @Override
     public void onRequestPermissionsResult(int kode, @NonNull String[] tillatelser, @NonNull int[] resultater) {
         super.onRequestPermissionsResult(kode, tillatelser, resultater);
@@ -79,9 +84,22 @@ public class BluetoothSkanning extends AppCompatActivity {
             startBluetoothSkanning();
         }
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(bluetoothReceiver);
+    }
+
+    // Når listen med resultater hentes, så er det en ventetid på 5 sekunder
+    // for å gi nok tid til skann metoden til å bli ferdig med søket
+    // Dette er ikke den beste løsningen, skal forbedre det på et senere tidspunkt
+    public List hentResultater() {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return resultater;
     }
 }
