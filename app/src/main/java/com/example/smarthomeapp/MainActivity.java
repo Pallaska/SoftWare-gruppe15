@@ -13,7 +13,6 @@ import com.example.smarthomeapp.integrering.skanning.BluetoothSkanning;
 import com.example.smarthomeapp.integrering.skanning.WiFiSkanning;
 import com.example.smarthomeapp.integrering.skanning.mDNSSkanning;
 import com.example.smarthomeapp.integrering.skanning.mDNSSkanning;
-
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
