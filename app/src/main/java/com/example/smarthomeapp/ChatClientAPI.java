@@ -1,4 +1,4 @@
-package com.example.smarthomeapp.chatbot;
+package com.example.smarthomeapp;
 import okhttp3.*;
 import java.io.IOException;
 import org.json.JSONException;
