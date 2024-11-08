@@ -4,10 +4,12 @@ import javax.jmdns.ServiceEvent;
 import javax.jmdns.ServiceListener;
 import java.io.IOException;
 import java.net.InetAddress;
+import java.util.List;
 
 public class mDNSSkanning {
 
     private JmDNS jmdns;
+    private List<ServiceEvent> resultater;
 
     // _http._tcp.local.
     // _ewelink._tcp.local.
@@ -31,17 +33,29 @@ public class mDNSSkanning {
                     public void serviceAdded(ServiceEvent hendelse) {
                         System.out.println("Tjeneste lagt til: " + hendelse.getName());
                     }
+
                     // En tjeneste som var oppdaget er ikke lenger tilgjengelig
                     @Override
                     public void serviceRemoved(ServiceEvent hendelse) {
+                        // Hvis en WiFi enhet ikke lenger er tilgjengelig
+                        // så fjernes den fra listen over WiFi enheter
+                        for (ServiceEvent serviceEvent : resultater) {
+                            if (serviceEvent == hendelse) {
+                                resultater.remove(serviceEvent);
+                            }
+                        }
                         System.out.println("Tjeneste fjernet: " + hendelse.getName());
                     }
+
                     // En tjeneste har blitt fullstendig kartlagt
                     @Override
                     public void serviceResolved(ServiceEvent hendelse) {
+                        // Lagrer enheter som blir funnet
+                        resultater.add(hendelse);
                         System.out.println("Tjeneste funnet: " + hendelse.getInfo());
                     }
                 });
+
                 // Thread objekt for tidsavbrudd av enhetsskanning
                 new Thread(() -> {
                     try {
@@ -56,6 +70,7 @@ public class mDNSSkanning {
             }
         }).start();
     }
+
     // Metode for å avslutte enhetsskanning, kalles av
     // Thread objektet (tidsavbrudd)
     public void avsluttEnhetsskanning() {
@@ -66,5 +81,9 @@ public class mDNSSkanning {
                 e.printStackTrace();
             }
         }
+    }
+
+    public List hentResultater() {
+        return resultater;
     }
 }
