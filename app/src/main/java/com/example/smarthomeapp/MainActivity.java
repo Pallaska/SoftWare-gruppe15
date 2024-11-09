@@ -99,15 +99,6 @@ public class MainActivity extends AppCompatActivity {
             });
         });
 
-        // For innlogging. Stopper utførelse av videre kode dersom noe går galt
-        try {
-            authenticate = new Authenticate(this);
-        } catch (IOException e) {
-            Toast.makeText(this, "Feil ved lasting av brukerdata", Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
-            return;
-        }
-
         // Tekstfelt. ID-er skal være like som i xml-filen
         EditText usernameField = findViewById(R.id.username);
         EditText passwordField = findViewById(R.id.password);
@@ -127,20 +118,10 @@ public class MainActivity extends AppCompatActivity {
             // Sjekker om brukernavn og passord er riktig
             if (authenticate.validateLogin(username, password)) {
                 Toast.makeText(MainActivity.this, "Innlogging vellykket!", Toast.LENGTH_SHORT).show();
-                // Navigerer til neste skjerm. HomeActivity er skjermen som man kommer til når man logger inn
-                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
+                // Navigerer til neste skjerm.
             } else {
                 Toast.makeText(MainActivity.this, "Feil brukernavn eller passord", Toast.LENGTH_SHORT).show();
             }
-        });
-
-        // Knapp for å navigere til RegisterActivity
-        Button registerButton = findViewById(R.id.registerButton);
-        registerButton.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-            startActivity(intent);
         });
     }
 }
