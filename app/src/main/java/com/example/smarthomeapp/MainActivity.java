@@ -3,7 +3,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,17 +15,15 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.smarthomeapp.integrering.Tilkobling;
 import com.example.smarthomeapp.json.DataKonvertering;
 import com.example.smarthomeapp.json.LoggKonvertering;
-import com.example.smarthomeapp.model.Enhet;
+import com.example.smarthomeapp.model.WiFiEnhet;
 import com.example.smarthomeapp.model.Handling;
 import com.example.smarthomeapp.model.User;
 import com.example.smarthomeapp.integrering.skanning.BluetoothSkanning;
 import com.example.smarthomeapp.integrering.skanning.WiFiSkanning;
 import com.example.smarthomeapp.integrering.skanning.mDNSSkanning;
-import android.content.Intent;
 import com.example.smarthomeapp.service.Authenticate;
-import org.mindrot.jbcrypt.BCrypt;
+
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -60,14 +57,14 @@ public class MainActivity extends AppCompatActivity {
             // Eksempel på bruk av JSON database
             // Lag objekter av User, Enhet og Konvertering
             User eksempelBruker = new User(1, "A", "B", "C", "D", "E", "F", 2, "G");
-            Enhet eksempelEnhet = new Enhet(1, "A", "B", "C");
+            WiFiEnhet eksempelWiFiEnhet = new WiFiEnhet(1, "A", "B", "C", 2, "E", "F");
             DataKonvertering K = new DataKonvertering();
             // Returnerer en liste med brukere og enheter fra JSON-filen
             K.hentBrukere();
             K.hentEnheter();
             // Legger til et bruker og et enhet objekt til JSON-filen
             K.leggTilBruker(eksempelBruker);
-            K.leggTilEnhet(eksempelEnhet);
+            K.leggTilEnhet(eksempelWiFiEnhet);
 
             // Eksempel på bruk av chat
             chatClientAPI = new ChatClientAPI();

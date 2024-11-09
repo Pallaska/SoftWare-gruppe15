@@ -27,6 +27,7 @@ public class Tilkobling {
     public Tilkobling(Context context) {
         this.context = context;
     }
+
     public boolean kobleTilWiFiNettverk(String ssid, String passord) {
         wifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 

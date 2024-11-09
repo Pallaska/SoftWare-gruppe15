@@ -111,66 +111,102 @@
       "bilde": "bildeId"
     }
   ],
-  "enheter":  [
+  "WiFi enheter":  [
     {
       "enhetID": 1,
       "enhetNavn": "TV",
+      "enhetProtokoll": "",
+      "enhetIp": "",
+      "enhetPort": "",
       "enhetFunksjon": "Media",
       "enhetSted": "Stue"
     },
     {
       "enhetID": 2,
       "enhetNavn": "Vaskemaskin",
+      "enhetProtokoll": "",
+      "enhetIp": "",
+      "enhetPort": "",
       "enhetFunksjon": "Hvitevarer",
       "enhetSted": "Bad"
     },
     {
       "enhetID": 3,
       "enhetNavn": "Gressklipper",
+      "enhetProtokoll": "",
+      "enhetIp": "",
+      "enhetPort": "",
       "enhetFunksjon": "Vedlikehold",
       "enhetSted": "Garasje"
     },
     {
       "enhetID": 4,
       "enhetNavn": "Stuelys",
+      "enhetProtokoll": "",
+      "enhetIp": "",
+      "enhetPort": "",
       "enhetFunksjon": "Belysning",
       "enhetSted": "Stue"
     },
     {
       "enhetID": 5,
       "enhetNavn": "Baderomslys",
+      "enhetProtokoll": "",
+      "enhetIp": "",
+      "enhetPort": "",
       "enhetFunksjon": "Belysning",
       "enhetSted": "Bad"
     },
     {
       "enhetID": 6,
       "enhetNavn": "Gulvvarmer stue",
+      "enhetProtokoll": "",
+      "enhetIp": "",
+      "enhetPort": "",
       "enhetFunksjon": "Varme",
       "enhetSted": "Stue"
     },
     {
       "enhetID": 7,
       "enhetNavn": "Soverom TV",
+      "enhetProtokoll": "",
+      "enhetIp": "",
+      "enhetPort": "",
       "enhetFunksjon": "Media",
       "enhetSted": "Soverom"
     },
     {
       "enhetID": 8,
       "enhetNavn": "Hoveddør lås",
+      "enhetProtokoll": "",
+      "enhetIp": "",
+      "enhetPort": "",
       "enhetFunksjon": "Adgang",
       "enhetSted": "Inngang"
     },
     {
       "enhetID": 9,
       "enhetNavn": "Ringeklokke",
+      "enhetProtokoll": "",
+      "enhetIp": "",
+      "enhetPort": "",
       "enhetFunksjon": "Adgang",
       "enhetSted": "Inngang"
     },
     {
       "enhetID": 10,
       "enhetNavn": "Støvsuger",
+      "enhetProtokoll": "",
+      "enhetIp": "",
+      "enhetPort": "",
       "enhetFunksjon": "Rydding",
       "enhetSted": "Ingen"
+    }
+  ],
+  "Bluetooth enheter":  [
+    {
+      "enhetID": 1,
+      "enhetNavn": ""
     }
   ],
   "instillinger":  [
