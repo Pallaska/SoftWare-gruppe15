@@ -59,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
 
             // Eksempel på bruk av JSON database
             // Lag objekter av User, Enhet og Konvertering
-            User eksempelBruker = new User(1, "A", "B", "C", "D", "E", "F", 2);
-            Enhet eksempelEnhet = new Enhet(1, "A");
+            User eksempelBruker = new User(1, "A", "B", "C", "D", "E", "F", 2, "G");
+            Enhet eksempelEnhet = new Enhet(1, "A", "B", "C");
             DataKonvertering K = new DataKonvertering();
             // Returnerer en liste med brukere og enheter fra JSON-filen
             K.hentBrukere();

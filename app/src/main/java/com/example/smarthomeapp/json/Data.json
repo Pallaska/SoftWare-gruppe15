@@ -8,7 +8,8 @@
       "rettigheter": "12345",
       "adresse": "basestien 22",
       "email": "testmail@live.no",
-      "telefon": 34724923
+      "telefon": 34724923,
+      "bilde": "bildeId"
     },
     {
       "brukerID": 401,
@@ -18,7 +19,8 @@
       "rettigheter": "12345",
       "adresse": "rosestien 21",
       "email": "Marirose@live.no",
-      "telefon": 12345678
+      "telefon": 12345678,
+      "bilde": "bildeId"
     },
     {
       "brukerID": 402,
@@ -28,7 +30,8 @@
       "rettigheter": "12345",
       "adresse": "poppystien 20",
       "email": "Einarpoppy@live.no",
-      "telefon": 34567890
+      "telefon": 34567890,
+      "bilde": "bildeId"
     },
     {
       "brukerID": 403,
@@ -38,7 +41,8 @@
       "rettigheter": "12345",
       "adresse": "hakkebakkeskogen 10",
       "email": "ole.ed@live.no",
-      "telefon": 45678901
+      "telefon": 45678901,
+      "bilde": "bildeId"
     },
     {
       "brukerID": 404,
@@ -48,7 +52,8 @@
       "rettigheter": "12345",
       "adresse": "hundremeterskogen 4",
       "email": "ida.hundre@live.no",
-      "telefon": 56789012
+      "telefon": 56789012,
+      "bilde": "bildeId"
     },
     {
       "brukerID": 405,
@@ -58,7 +63,8 @@
       "rettigheter": "12345",
       "adresse": "plutoveien 3",
       "email": "mikke.pluto@live.no",
-      "telefon": 67890123
+      "telefon": 67890123,
+      "bilde": "bildeId"
     },
     {
       "brukerID": 406,
@@ -68,7 +74,8 @@
       "rettigheter": "12345",
       "adresse": "minniestien 9",
       "email": "minnie.stien@live.no",
-      "telefon": 78901234
+      "telefon": 78901234,
+      "bilde": "bildeId"
     },
     {
       "brukerID": 407,
@@ -78,7 +85,8 @@
       "rettigheter": "12345",
       "adresse": "donaldstien 1",
       "email": "donald@live.no",
-      "telefon": 89012345
+      "telefon": 89012345,
+      "bilde": "bildeId"
     },
     {
       "brukerID": 408,
@@ -88,7 +96,8 @@
       "rettigheter": "12345",
       "adresse": "dollystien 81",
       "email": "dolly@live.no",
-      "telefon": 90123456
+      "telefon": 90123456,
+      "bilde": "bildeId"
     },
     {
       "brukerID": 409,
@@ -98,49 +107,76 @@
       "rettigheter": "12345",
       "adresse": "drÃ¸mmestien 44",
       "email": "tingeling@live.no",
-      "telefon": 13579135
+      "telefon": 13579135,
+      "bilde": "bildeId"
     }
   ],
   "enheter":  [
     {
       "enhetID": 1,
-      "enhetNavn": "TV"
+      "enhetNavn": "TV",
+      "enhetFunksjon": "Media",
+      "enhetSted": "Stue"
     },
     {
       "enhetID": 2,
-      "enhetNavn": "Vaskemaskin"
+      "enhetNavn": "Vaskemaskin",
+      "enhetFunksjon": "Hvitevarer",
+      "enhetSted": "Bad"
     },
     {
       "enhetID": 3,
-      "enhetNavn": "Gressklipper"
+      "enhetNavn": "Gressklipper",
+      "enhetFunksjon": "Vedlikehold",
+      "enhetSted": "Garasje"
     },
     {
       "enhetID": 4,
-      "enhetNavn": "Stuelys"
+      "enhetNavn": "Stuelys",
+      "enhetFunksjon": "Belysning",
+      "enhetSted": "Stue"
     },
     {
       "enhetID": 5,
-      "enhetNavn": "Baderomslys"
+      "enhetNavn": "Baderomslys",
+      "enhetFunksjon": "Belysning",
+      "enhetSted": "Bad"
     },
     {
       "enhetID": 6,
-      "enhetNavn": "Gulvvarmer stue"
+      "enhetNavn": "Gulvvarmer stue",
+      "enhetFunksjon": "Varme",
+      "enhetSted": "Stue"
     },
     {
       "enhetID": 7,
-      "enhetNavn": "Soverom TV"
+      "enhetNavn": "Soverom TV",
+      "enhetFunksjon": "Media",
+      "enhetSted": "Soverom"
     },
     {
       "enhetID": 8,
-      "enhetNavn": "Hoveddør lås"
+      "enhetNavn": "Hoveddør lås",
+      "enhetFunksjon": "Adgang",
+      "enhetSted": "Inngang"
     },
     {
       "enhetID": 9,
-      "enhetNavn": "Ringeklokke"
+      "enhetNavn": "Ringeklokke",
+      "enhetFunksjon": "Adgang",
+      "enhetSted": "Inngang"
     },
     {
       "enhetID": 10,
-      "enhetNavn": "Støvsuger"
+      "enhetNavn": "Støvsuger",
+      "enhetFunksjon": "Rydding",
+      "enhetSted": "Ingen"
+    }
+  ],
+  "instillinger":  [
+    {
+      "varsler": "av",
+      "språk": "norsk"
     }
   ]
 }

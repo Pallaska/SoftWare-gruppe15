@@ -20,8 +20,10 @@ public class User {
     private String adresse;
     @SerializedName("telefon")
     private int telefon;
+    @SerializedName("bilde")
+    private String bilde;
 
-    public User(int brukerID, String brukernavn, String passord, String fodselsdato, String rettigheter, String email, String adresse, int telefon) {
+    public User(int brukerID, String brukernavn, String passord, String fodselsdato, String rettigheter, String email, String adresse, int telefon, String bilde) {
         this.brukerID = brukerID;
         this.brukernavn = brukernavn;
         this.passord = passord;
@@ -30,6 +32,7 @@ public class User {
         this.email = email;
         this.adresse = adresse;
         this.telefon = telefon;
+        this.bilde = bilde;
     }
 
     public int getBrukerID() {
@@ -56,6 +59,7 @@ public class User {
     public int getTelefon() {
         return telefon;
     }
+    public String getBilde() { return bilde; }
 
     // for å hashet passordet
     public void setPassord(String passord) {
@@ -72,7 +76,8 @@ public class User {
                 ", rettigheter='" + rettigheter + '\'' +
                 ", email='" + email + '\'' +
                 ", adresse='" + email + '\'' +
-                ", telefon=" + telefon +
+                ", telefon=" + telefon + '\'' +
+                ", bilde=" + bilde +
                 '}';
     }
 }
