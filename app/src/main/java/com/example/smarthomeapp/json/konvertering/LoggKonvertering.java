@@ -1,4 +1,4 @@
-package com.example.smarthomeapp.json;
+package com.example.smarthomeapp.json.konvertering;
 import com.example.smarthomeapp.model.Handling;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

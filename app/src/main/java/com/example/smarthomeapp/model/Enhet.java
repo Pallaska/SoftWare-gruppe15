@@ -21,6 +21,10 @@ public class Enhet {
         return enhetNavn;
     }
 
+    public void setEnhetNavn(String nyEnhetNavn) {
+        this.enhetNavn = nyEnhetNavn;
+    }
+
     @Override
     public String toString() {
         return "Enhet{" + "enhetID=" + enhetID + ", enhetNavn=" + enhetNavn + '}';

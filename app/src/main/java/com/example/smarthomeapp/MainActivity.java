@@ -3,7 +3,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,21 +13,18 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 import com.example.smarthomeapp.integrering.Tilkobling;
-import com.example.smarthomeapp.json.DataKonvertering;
-import com.example.smarthomeapp.json.LoggKonvertering;
+import com.example.smarthomeapp.json.DataBehandling;
+import com.example.smarthomeapp.json.konvertering.DataKonvertering;
+import com.example.smarthomeapp.json.konvertering.LoggKonvertering;
 import com.example.smarthomeapp.model.Enhet;
 import com.example.smarthomeapp.model.Handling;
 import com.example.smarthomeapp.model.User;
 import com.example.smarthomeapp.integrering.skanning.BluetoothSkanning;
 import com.example.smarthomeapp.integrering.skanning.WiFiSkanning;
 import com.example.smarthomeapp.integrering.skanning.mDNSSkanning;
-import android.content.Intent;
 import com.example.smarthomeapp.service.Authenticate;
-import org.mindrot.jbcrypt.BCrypt;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -62,12 +58,13 @@ public class MainActivity extends AppCompatActivity {
             User eksempelBruker = new User(1, "A", "B", "C", "D", "E", "F", 2);
             Enhet eksempelEnhet = new Enhet(1, "A");
             DataKonvertering K = new DataKonvertering();
+            DataBehandling B = new DataBehandling();
             // Returnerer en liste med brukere og enheter fra JSON-filen
-            K.hentBrukere();
-            K.hentEnheter();
+            K.hentFraJson("brukere", User.class);
+            K.hentFraJson("enheter", Enhet.class);
             // Legger til et bruker og et enhet objekt til JSON-filen
-            K.leggTilBruker(eksempelBruker);
-            K.leggTilEnhet(eksempelEnhet);
+            K.leggTilJson(eksempelBruker, "brukere", User.class);
+            K.leggTilJson(eksempelEnhet, "enheter", Enhet.class);
 
             // Eksempel på bruk av chat
             chatClientAPI = new ChatClientAPI();

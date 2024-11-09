@@ -57,6 +57,26 @@ public class User {
         return telefon;
     }
 
+    // Metodene som brukes av DataBehandling.endreJson()
+    public void setBrukernavn(String nyBrukernavn) {
+        this.brukernavn = nyBrukernavn;
+    }
+    public void setFodselsdato(String nyFodselsdato) {
+        this.fodselsdato = nyFodselsdato;
+    }
+    public void setRettigheter(String nyRettigheter) {
+        this.rettigheter = nyRettigheter;
+    }
+    public void setEmail(String nyEmail) {
+        this.email = nyEmail;
+    }
+    public void setAdresse(String nyAdresse) {
+        this.adresse = nyAdresse;
+    }
+    public void setTelefon(int nyTelefon) {
+        this.telefon = nyTelefon;
+    }
+
     // for å hashet passordet
     public void setPassord(String passord) {
         this.passord = passord;
