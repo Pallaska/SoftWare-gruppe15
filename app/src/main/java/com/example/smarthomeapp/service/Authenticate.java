@@ -13,7 +13,7 @@ public class Authenticate {
 
     // Laster brukerinformasjonen fra json filen
     public Authenticate() throws IOException {
-        users = dataKonvertering.hentBrukere();
+        users = dataKonvertering.hentFraJson();
     }
 
     // Få listen over brukere
@@ -23,7 +23,7 @@ public class Authenticate {
 
     // Legge til bruker
     public void addUser(User user) {
-        dataKonvertering.leggTilBruker(user);
+        dataKonvertering.leggTilJson();
     }
 
     // Metode for å validere innlogging. Returnerer true om brukernavn og passord matcher
