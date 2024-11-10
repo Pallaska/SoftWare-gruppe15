@@ -57,7 +57,10 @@ public class User {
         return telefon;
     }
 
-    // for å hashet passordet
+    public void setBrukernavn(String brukernavn) {
+        this.brukernavn = brukernavn;
+    }
+   
     public void setPassord(String passord) {
         this.passord = passord;
     }

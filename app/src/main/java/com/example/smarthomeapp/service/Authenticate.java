@@ -67,4 +67,18 @@ public class Authenticate {
     public static class DataContainer {
         List<User> brukere;
     }
+
+    // Metode for endring av brukernavn og passord
+    public boolean updateCredentials(int brukerID, String newUsername, String newPassword) {
+        for (User user : users) {
+            if (user.getBrukerID() == brukerID) {
+                user.setBrukernavn(newUsername);
+                user.setPassord(newPassword);
+                return true;
+            }
+        }
+        return false;
+    }
 }
+
+
