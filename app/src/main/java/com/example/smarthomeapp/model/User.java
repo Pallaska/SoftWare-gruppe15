@@ -57,6 +57,13 @@ public class User {
         return telefon;
     }
 
+    public void setBrukernavn(String brukernavn) {
+        this.brukernavn = brukernavn;
+    }
+    public void setPassord(String passord) {
+        this.passord = passord;
+    }
+
     @Override
     public String toString() {
         return "Bruker{" +
