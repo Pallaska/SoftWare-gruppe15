@@ -1,5 +1,6 @@
 package com.example.smarthomeapp.service;
 import android.content.Context;
+import com.example.smarthomeapp.json.DataKonvertering;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
@@ -9,11 +10,15 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import com.example.smarthomeapp.model.User;
+import org.mindrot.jbcrypt.BCrypt;
 
 // Klasse for autentisering, lasting av brukere fra json og validering
 public class Authenticate {
     // Liste som lagrer data om brukere når de er lastet fra json
     private List<User> users = new ArrayList<>();
+
+    // Tar i bruk datakonvertering
+    private DataKonvertering datakonvertering = new DataKonvertering();
 
     // Laster brukerinformasjonen fra json filen
     public Authenticate(Context context) throws IOException {
@@ -69,16 +74,25 @@ public class Authenticate {
     }
 
     // Metode for endring av brukernavn og passord
-    public boolean updateCredentials(int brukerID, String newUsername, String newPassword) {
+    public boolean updateCredentials(int brukerID, String currentPassword, String newUsername, String newPassword) {
+        List<User> users = datakonvertering.hentBrukere();
+
         for (User user : users) {
-            if (user.getBrukerID() == brukerID) {
+            if (user.getBrukerID() == brukerID && BCrypt.checkpw(currentPassword, user.getPassord())) {
+
                 user.setBrukernavn(newUsername);
-                user.setPassord(newPassword);
+
+                String hashedNewPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+                user.setPassord(hashedNewPassword);
+
+                datakonvertering.leggTilBruker(user);
+
                 return true;
             }
         }
         return false;
     }
+
 }
 
 
