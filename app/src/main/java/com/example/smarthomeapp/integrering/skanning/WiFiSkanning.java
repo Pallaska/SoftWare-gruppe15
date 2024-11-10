@@ -10,7 +10,6 @@ import android.net.wifi.WifiManager;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
 import androidx.core.app.ActivityCompat;
 import com.example.smarthomeapp.R;
 import java.util.List;
@@ -18,6 +17,7 @@ import java.util.List;
 public class WiFiSkanning extends AppCompatActivity {
 
     private WifiManager wifiManager;
+    private List<ScanResult> resultater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,29 +36,29 @@ public class WiFiSkanning extends AppCompatActivity {
             startWiFiSkann();
         }
     }
+
     // Siden BroadcastReceiver er registrert i onCreate og logikken for håndtering
     // av resultater er i BroadcastReceiver, så er det ingen else-statement for å håndtere
     // wifiManager.startScan() som returnerer true
     private void startWiFiSkann() {
         if (!wifiManager.startScan()) {
-            Toast.makeText(this, "WiFi skann feilet", Toast.LENGTH_SHORT).show();
+            System.out.println("WiFi skann feilet");
         }
     }
+
     private final BroadcastReceiver wifiBroadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             // Håndterer tilfellet at tillatelse ikke ble gitt
             if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(context, "Du mangler tillatelse", Toast.LENGTH_SHORT).show();
+                System.out.println("Feil: mangler ACCESS_FINE_LOCATION tillatelsen");
                 return;
             }
-            // Presenterer WiFi nettverk som ble funnet
-            List<ScanResult> resultater = wifiManager.getScanResults();
-            for (ScanResult resultat : resultater) {
-                Toast.makeText(context, "WiFi nettverk som ble funnet: " + resultat.SSID, Toast.LENGTH_SHORT).show();
-            }
+            // Lagrer WiFi nettverk som ble funnet i en liste
+            resultater = wifiManager.getScanResults();
         }
     };
+
     @Override
     public void onRequestPermissionsResult(int kode, @NonNull String[] tillatelser, @NonNull int[] resultater) {
         super.onRequestPermissionsResult(kode, tillatelser, resultater);
@@ -70,9 +70,22 @@ public class WiFiSkanning extends AppCompatActivity {
             startWiFiSkann();
         }
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(wifiBroadcastReceiver);
+    }
+
+    // Når listen med resultater hentes, så er det en ventetid på 5 sekunder
+    // for å gi nok tid til skann metoden til å bli ferdig med søket
+    // Dette er ikke den beste løsningen, skal forbedre det på et senere tidspunkt
+    public List hentResultater() {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return resultater;
     }
 }

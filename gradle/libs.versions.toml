@@ -15,6 +15,7 @@ navigationRuntime = "2.8.3"
 navigationFragment = "2.8.2"
 firebaseFirestore = "25.1.0"
 navigation = "2.5.3"
+jbcrypt = "0.4"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -32,6 +33,7 @@ navigation-runtime = { group = "androidx.navigation", name = "navigation-runtime
 navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }
 navigation-ui = {module = "androidx.navigation:navigation-ui", version.ref = "navigation"}
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
+jbcrypt = { group = "org.mindrot", name = "jbcrypt", version.ref = "jbcrypt" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

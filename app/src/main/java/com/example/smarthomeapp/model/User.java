@@ -60,6 +60,7 @@ public class User {
     public void setBrukernavn(String brukernavn) {
         this.brukernavn = brukernavn;
     }
+   
     public void setPassord(String passord) {
         this.passord = passord;
     }
