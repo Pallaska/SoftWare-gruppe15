@@ -1,4 +1,4 @@
-package com.example.smarthomeapp;
+package com.example.smarthomeapp.service;
 
 import java.util.HashMap;
 

@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <!-- Øverste del med hvit bakgrunn -->
+    <View
+            android:id="@+id/topBackground"
+            android:layout_width="0dp"
+            android:layout_height="220dp"
+            android:background="@drawable/top_background_with_stroke"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <!-- Favorites row -->
+    <TextView
+            android:id="@+id/headerTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dine favoritter"
+            android:textSize="20sp"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="#000000"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp" app:layout_constraintHorizontal_bias="0.065"/>
+    <ImageView
+            android:id="@+id/logoutButton"
+            android:layout_width="41dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="368dp"/>
+    <LinearLayout
+            android:layout_width="409dp"
+            android:layout_height="151dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/headerTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            android:gravity="center">
+
+        <ImageView
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:src="@drawable/ic_bulb"
+                android:layout_margin="2dp"
+                android:contentDescription="Belysning"/>
+        <ImageView
+                android:layout_width="130dp"
+                android:layout_height="128dp"
+                android:src="@drawable/ic_tv"
+                android:layout_margin="2dp"
+                android:contentDescription="Smart TV"/>
+
+        <ImageView
+                android:layout_width="124dp"
+                android:layout_height="125dp"
+                android:src="@drawable/ic_washing_machine"
+                android:layout_margin="2dp"
+                android:contentDescription="Vaskemaskin"/>
+    </LinearLayout>
+
+    <!-- Section for Belysning -->
+
+    <!-- Toggle switches for lighting -->
+    <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/lightingTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp">
+
+
+    </LinearLayout>
+
+    <!-- Buttons for access control -->
+    <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/accessTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="0dp"
+            android:padding="8dp">
+
+
+        <!-- Inngangsdør Button -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="3dp">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Inngangsdør"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_weight="1"
+                    android:textColor="#000000" />
+
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Åpne"
+                    android:backgroundTint="#B3E7FD"
+                    android:textColor="#000000" />
+        </LinearLayout>
+
+        <!-- Bakdør Button -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="3dp">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Bakdør"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_weight="1"
+                    android:textColor="#000000" />
+
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Åpne"
+                    android:backgroundTint="#B3E7FD"
+                    android:textColor="#000000" />
+        </LinearLayout>
+
+        <!-- Garasje Button -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="3dp">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Garasje"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_weight="1"
+                    android:textColor="#000000" />
+
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Åpne"
+                    android:backgroundTint="#B3E7FD"
+                    android:textColor="#000000" />
+        </LinearLayout>
+
+        <!-- Safe Button -->
+        <LinearLayout
+                android:id="@+id/safeButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="3dp">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Safe"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_weight="1"
+                    android:textColor="#000000" />
+
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Åpne"
+                    android:backgroundTint="#B3E7FD"
+                    android:textColor="#000000" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+
+    <!-- Separator mellom Belysning og Adgang -->
+    <View
+            android:id="@+id/sectionSeparator2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="#242424"
+            app:layout_constraintTop_toBottomOf="@id/lightingTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="550dp" />
+    <!-- Manage devices button -->
+    <Button
+            android:id="@+id/manageDevicesButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Administrer enheter"
+            android:backgroundTint="#B3E7FD"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.497"
+            android:layout_marginBottom="4dp"/>
+    <TextView
+            android:id="@+id/lightingTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Belysning"
+            android:textSize="18sp"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="#000000"
+            app:layout_constraintTop_toBottomOf="@id/topBackground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="5dp"/>
+
+    <!-- Separator mellom Belysning og Adgang -->
+    <View
+            android:id="@+id/sectionSeparator"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="#242424"
+            app:layout_constraintTop_toBottomOf="@id/lightingTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="220dp" />
+
+    <!-- Access title (Adgang) placed below the separator -->
+    <TextView
+            android:id="@+id/accessTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adgang"
+            android:textSize="18sp"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="#000000"
+            app:layout_constraintTop_toBottomOf="@id/sectionSeparator"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="5dp"
+            />
+
+    <ImageView
+            android:id="@+id/settingsIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_settings"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="45dp"/>
+
+    <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/lightingTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="0dp"
+            android:padding="8dp">
+
+        <!-- Soverom Switch -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="3dp">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Soverom"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_weight="1"
+                    android:textColor="#000000"/>
+
+            <Switch
+                    android:id="@+id/bedroomSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_margin="8dp"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"/>
+        </LinearLayout>
+
+        <!-- Bad Switch -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="3dp">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Bad"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_weight="1"
+                    android:textColor="#000000"/>
+
+            <Switch
+                    android:id="@+id/bathroomSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"/>
+        </LinearLayout>
+
+        <!-- Inngang Switch -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="3dp">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Inngang"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_weight="1"
+                    android:textColor="#000000"/>
+
+            <Switch
+                    android:id="@+id/entranceSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"/>
+        </LinearLayout>
+
+        <!-- Hage Switch -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="3dp">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Hage"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_weight="1"
+                    android:textColor="#000000"/>
+
+            <Switch
+                    android:id="@+id/gardenSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
