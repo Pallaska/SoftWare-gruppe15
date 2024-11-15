@@ -25,7 +25,13 @@
         <activity android:name=".service.RegisterActivity" />
         <activity android:name=".service.HomeActivity" />
         <activity android:name=".SettingsActivity" />
-        <activity android:name=".AdministrerEnheterActivity"></activity>
+        <activity android:name=".AdministrerEnheterActivity"/>
+        <activity android:name=".AccessControlActivity">
+
+
+
+        </activity>
+
 
     </application>
 
