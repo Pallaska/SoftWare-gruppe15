@@ -21,6 +21,10 @@ public class BluetoothEnhet {
         return enhetNavn;
     }
 
+    public void setEnhetNavn(String nyEnhetNavn) {
+        this.enhetNavn = nyEnhetNavn;
+    }
+
     @Override
     public String toString() {
         return "BluetoothEnhet{" + "enhetID=" + enhetID + ", enhetNavn=" + enhetNavn + '}';
