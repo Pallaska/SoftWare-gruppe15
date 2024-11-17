@@ -1,15 +1,15 @@
 package com.example.smarthomeapp.model;
 import com.google.gson.annotations.SerializedName;
 
-public class Enhet {
+public class BluetoothEnhet {
     // @SerializedName er der i tilfelle det er forskjellig
     // format mellom Java variablene og det som er i JSON
-    @SerializedName("brukerID")
+    @SerializedName("enhetID")
     private int enhetID;
-    @SerializedName("brukernavn")
+    @SerializedName("enhetNavn")
     private String enhetNavn;
 
-    public Enhet(int enhetID, String enhet) {
+    public BluetoothEnhet(int enhetID, String enhetNavn) {
         this.enhetID = enhetID;
         this.enhetNavn = enhetNavn;
     }
@@ -23,6 +23,6 @@ public class Enhet {
 
     @Override
     public String toString() {
-        return "Enhet{" + "enhetID=" + enhetID + ", enhetNavn=" + enhetNavn + '}';
+        return "BluetoothEnhet{" + "enhetID=" + enhetID + ", enhetNavn=" + enhetNavn + '}';
     }
 }

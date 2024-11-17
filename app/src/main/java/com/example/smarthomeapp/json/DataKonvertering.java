@@ -1,5 +1,5 @@
 package com.example.smarthomeapp.json;
-import com.example.smarthomeapp.model.Enhet;
+import com.example.smarthomeapp.model.WiFiEnhet;
 import com.example.smarthomeapp.model.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -72,8 +72,8 @@ public class DataKonvertering {
     }
 
     // Metode som leser enheter fra JSON og returnerer en liste med enhet objekter
-    public List<Enhet> hentEnheter() {
-        List<Enhet> enhetListe = new ArrayList<>();
+    public List<WiFiEnhet> hentEnheter() {
+        List<WiFiEnhet> wiFiEnhetListe = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader("Data.json"))) {
             StringBuilder jsonStringBuilder = new StringBuilder();
             String linje;
@@ -90,31 +90,31 @@ public class DataKonvertering {
             // Konverterer hvert element i bruker array-en til et enhet objekt
             // dvs. strukturen som er definert i Enhet class
             for (int i = 0; i < jsonArray.size(); i++) {
-                Enhet enhet = G.fromJson(jsonArray.get(i), Enhet.class);
-                enhetListe.add(enhet);
+                WiFiEnhet wiFiEnhet = G.fromJson(jsonArray.get(i), WiFiEnhet.class);
+                wiFiEnhetListe.add(wiFiEnhet);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return enhetListe;
+        return wiFiEnhetListe;
     }
 
-    // Metode for å legge til ny enhet til JSON filen
-    public void leggTilEnhet(Enhet nyEnhet) {
+    // Metode for å legge til ny WiFi enhet til JSON filen
+    public void leggTilWiFiEnhet(WiFiEnhet nyWiFiEnhet) {
         try {
-            List<Enhet> enhetListe = hentEnheter();
-            enhetListe.add(nyEnhet);
+            List<WiFiEnhet> wiFiEnhetListe = hentEnheter();
+            wiFiEnhetListe.add(nyWiFiEnhet);
 
             // Konverterer listen tilbake til en JSON array
             JsonArray oppdatertJsonArray = new JsonArray();
-            for (Enhet enhet : enhetListe) {
-                JsonObject enhetJson = G.toJsonTree(enhet).getAsJsonObject();
+            for (WiFiEnhet wiFiEnhet : wiFiEnhetListe) {
+                JsonObject enhetJson = G.toJsonTree(wiFiEnhet).getAsJsonObject();
                 oppdatertJsonArray.add(enhetJson);
             }
 
             // Skriver den oppdaterte informasjonen til JSON filen
             JsonObject jsonObject = new JsonObject();
-            jsonObject.add("enheter", oppdatertJsonArray);
+            jsonObject.add("WiFi enheter", oppdatertJsonArray);
 
             try (BufferedWriter writer = new BufferedWriter(new FileWriter("Data.json"))) {
                 G.toJson(jsonObject, writer);
