@@ -57,9 +57,29 @@ public class User {
         return telefon;
     }
 
-    // for å hashet passordet
+    public void setBrukerID(int brukerID) {
+        this.brukerID = brukerID;
+    }
+    public void setBrukernavn(String brukernavn) {
+        this.brukernavn = brukernavn;
+    }
     public void setPassord(String passord) {
         this.passord = passord;
+    }
+    public void setFodselsdato(String fodselsdato) {
+        this.fodselsdato = fodselsdato;
+    }
+    public void setRettigheter(String rettigheter) {
+        this.rettigheter = rettigheter;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+    public void setTelefon(int telefon) {
+        this.telefon = telefon;
     }
 
     @Override

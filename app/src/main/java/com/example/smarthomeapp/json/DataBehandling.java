@@ -1,10 +1,9 @@
 package com.example.smarthomeapp.json;
-import com.example.smarthomeapp.json.konvertering.DataKonvertering;
+import com.example.smarthomeapp.model.BluetoothEnhet;
 import com.example.smarthomeapp.model.WiFiEnhet;
 import com.example.smarthomeapp.model.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -15,43 +14,39 @@ public class DataBehandling {
 
     // Metode som returnerer en liste med enheter basert på område eller funksjon
     public List<WiFiEnhet> hentWiFiEnhetGruppe(WiFiEnhet enhet, String gruppe) {
-        try {
-            List<Object> hentetListe = dataKonvertering.hentFraJson("WiFi enheter", WiFiEnhet.class);
-            List<WiFiEnhet> stedListe = new ArrayList<>();
-            List<WiFiEnhet> funksjonListe = new ArrayList<>();
+        List<Object> hentetListe = dataKonvertering.hentFraJson("WiFi enheter", WiFiEnhet.class, "Data.json");
+        List<WiFiEnhet> stedListe = new ArrayList<>();
+        List<WiFiEnhet> funksjonListe = new ArrayList<>();
 
-            if (Objects.equals(gruppe, "sted")) {
-                for (Object objekt : hentetListe) {
-                    WiFiEnhet enhetObjekt = (WiFiEnhet) objekt;
-                    // Hvis området stemmer så legges enheten til listen
-                    // getSted() finnes i annen branch
-                    if (Objects.equals(enhetObjekt.getSted(), gruppe)) {
-                        stedListe.add(enhetObjekt);
-                    }
+        if (Objects.equals(gruppe, "sted")) {
+            for (Object objekt : hentetListe) {
+                WiFiEnhet enhetObjekt = (WiFiEnhet) objekt;
+                // Hvis området stemmer så legges enheten til listen
+                // getEnhetSted() finnes i annen branch
+                if (Objects.equals(enhetObjekt.getEnhetSted(), gruppe)) {
+                    stedListe.add(enhetObjekt);
                 }
-                return stedListe;
-            } else if (Objects.equals(gruppe, "funksjon")) {
-                for (Object objekt : hentetListe) {
-                    WiFiEnhet enhetObjekt = (WiFiEnhet) objekt;
-                    // Hvis funksjon stemmer så legges enheten til listen
-                    // getFunksjon() finnes i annen branch
-                    if (Objects.equals(enhetObjekt.getFunksjon(), gruppe)) {
-                        funksjonListe.add(enhetObjekt);
-                    }
-                }
-                return funksjonListe;
-            } else {
-                System.out.println("Feil: mulige parametere er 'sted' eller 'funksjon'");
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+            return stedListe;
+        } else if (Objects.equals(gruppe, "funksjon")) {
+            for (Object objekt : hentetListe) {
+                WiFiEnhet enhetObjekt = (WiFiEnhet) objekt;
+                // Hvis funksjon stemmer så legges enheten til listen
+                // getEnhetFunksjon() finnes i annen branch
+                if (Objects.equals(enhetObjekt.getEnhetFunksjon(), gruppe)) {
+                    funksjonListe.add(enhetObjekt);
+                }
+            }
+            return funksjonListe;
+        } else {
+            System.out.println("Feil: mulige parametere er 'sted' eller 'funksjon'");
         }
         return java.util.Collections.emptyList();
     }
     
     // Metode for å endre enhet/bruker verdier i JSON
-    public <T> void endreJson(Object endreObjekt, String kategori, Class<T> klasseNavn, String endreHva, String endreTil) {
-        List<Object> hentetListe = dataKonvertering.hentFraJson(kategori, klasseNavn);
+    public <T> void endreJson(Object endreObjekt, String kategori, Class<T> klasseNavn, String endreHva, String endreTil, String filnavn) {
+        List<Object> hentetListe = dataKonvertering.hentFraJson(kategori, klasseNavn, filnavn);
 
         // Endrer informasjon i JSON
         if (Objects.equals(kategori, "brukere")) {
@@ -116,8 +111,8 @@ public class DataBehandling {
     }
     
     // Metode for å slette fra et kategori i JSON
-    public <T> void slettFraJson(Object objektForSletting, String kategori, String filnavn, Class<T> klasseNavn) {
-        List<Object> hentetListe = dataKonvertering.hentFraJson(kategori, klasseNavn);
+    public <T> void slettFraJson(Object objektForSletting, String kategori, Class<T> klasseNavn, String filnavn) {
+        List<Object> hentetListe = dataKonvertering.hentFraJson(kategori, klasseNavn, filnavn);
 
         // Sletter et objekt fra listen
         hentetListe.remove(objektForSletting);

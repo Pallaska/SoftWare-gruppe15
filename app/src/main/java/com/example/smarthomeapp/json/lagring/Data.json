@@ -206,7 +206,8 @@
   "Bluetooth enheter":  [
     {
       "enhetID": 1,
-      "enhetNavn": ""
+      "enhetNavn": "",
+      "macAdresse": ""
     }
   ],
   "instillinger":  [

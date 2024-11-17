@@ -1,7 +1,7 @@
-package com.example.smarthomeapp.service;
-import com.example.smarthomeapp.json.DataKonvertering;
+package com.example.smarthomeapp;
 import java.io.IOException;
 import java.util.List;
+import com.example.smarthomeapp.json.DataKonvertering;
 import com.example.smarthomeapp.model.User;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -10,27 +10,28 @@ public class Authenticate {
     DataKonvertering dataKonvertering = new DataKonvertering();
 
     // Liste som lagrer data om brukere når de er lastet fra json
-    private List<User> users;
+    private List<Object> users;
 
     // Laster brukerinformasjonen fra json filen
     public Authenticate() throws IOException {
-        users = dataKonvertering.hentFraJson();
+        users = dataKonvertering.hentFraJson("A", User.class, "C");
     }
 
     // Få listen over brukere
-    public List<User> getUsers() {
+    public List<Object> getUsers() {
         return users;
     }
 
     // Legge til bruker
     public void addUser(User user) {
-        dataKonvertering.leggTilJson();
+        dataKonvertering.leggTilJson(user,"A", User.class, "C");
     }
 
     // Metode for å validere innlogging. Returnerer true om brukernavn og passord matcher
     public boolean validateLogin(String username, String password) {
-        for (User user : users) {
-            if (user.getBrukernavn().equals(username) && user.getPassord().equals(password)) {
+        for (Object user : users) {
+            User userObjekt = (User) user;
+            if (userObjekt.getBrukernavn().equals(username) && userObjekt.getPassord().equals(password)) {
                 return true;
             }
         }
@@ -39,17 +40,18 @@ public class Authenticate {
 
     // Metode for endring av brukernavn og passord
     public boolean updateCredentials(int brukerID, String currentPassword, String newUsername, String newPassword) {
-        List<User> users = datakonvertering.hentFraJson();
+        List<Object> users = dataKonvertering.hentFraJson("A", User.class, "B");
 
-        for (User user : users) {
-            if (user.getBrukerID() == brukerID && BCrypt.checkpw(currentPassword, user.getPassord())) {
+        for (Object user : users) {
+            User userObjekt = (User) user;
+            if (userObjekt.getBrukerID() == brukerID && BCrypt.checkpw(currentPassword, userObjekt.getPassord())) {
 
-                user.setBrukernavn(newUsername);
+                userObjekt.setBrukernavn(newUsername);
 
                 String hashedNewPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
-                user.setPassord(hashedNewPassword);
+                userObjekt.setPassord(hashedNewPassword);
 
-                datakonvertering.leggTilJson(user);
+                dataKonvertering.leggTilJson(userObjekt, "A", User.class, "B");
 
                 return true;
             }
