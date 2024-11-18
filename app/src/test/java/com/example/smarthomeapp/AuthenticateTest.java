@@ -7,6 +7,7 @@ import com.example.smarthomeapp.service.Authenticate;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mindrot.jbcrypt.BCrypt;
 import org.mockito.Mockito;
 
 import java.io.ByteArrayInputStream;
@@ -26,13 +27,16 @@ public class AuthenticateTest {
         Context mockContext = Mockito.mock(Context.class);
         AssetManager mockAssetManager = Mockito.mock(AssetManager.class);
 
+        // Passordet hashes
+        String hashedPassword = BCrypt.hashpw("passord123", BCrypt.gensalt());
+
         // Eksempel på JSON-data
         String testJson = "{\n" +
                 "  \"brukere\": [\n" +
                 "    {\n" +
                 "      \"brukerID\": 400,\n" +
                 "      \"brukernavn\": \"Hans\",\n" +
-                "      \"passord\": \"passord123\",\n" +
+                "      \"passord\": \"" + hashedPassword + "\",\n" +
                 "      \"fodselsdato\": \"15102000\",\n" +
                 "      \"rettigheter\": \"12345\",\n" +
                 "      \"adresse\": \"basestien 22\",\n" +
@@ -52,18 +56,21 @@ public class AuthenticateTest {
         // Initialiser Authenticate med den mockede Context
         authenticate = new Authenticate(mockContext);
     }
+    // Test som sjekker respons for korrekt brukernavn og passord
     @Test
     public void testValidateLogin_Success() {
         boolean result = authenticate.validateLogin("Hans", "passord123");
         assertTrue("Innlogging bør lykkes med korrekte legitimasjoner", result);
     }
 
+    // Test som sjekker respons for korrekt brukernavn, men feil passord
     @Test
     public void testValidateLogin_Failure_WrongPassword() {
         boolean result = authenticate.validateLogin("Hans", "feilpassord");
         assertFalse("Innlogging bør mislykkes med feil passord", result);
     }
 
+    // Test som sjekker respons for feil brukernavn, men korrekt passord
     @Test
     public void testValidateLogin_Failure_WrongUsername() {
         boolean result = authenticate.validateLogin("FeilBruker", "passord123");

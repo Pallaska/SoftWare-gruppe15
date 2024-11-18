@@ -54,14 +54,30 @@ public class Authenticate {
     }
 
     // Legge til bruker
-    public void addUser(User user) {
+    public boolean addUser(User user) {
+        // Sjekker om brukernavnet er tomt
+        if (user.getBrukernavn() == null || user.getBrukernavn().isEmpty()) {
+            return false;
+        }
+        // Sjekker om brukernavn allerede er i bruk
+        for (User existingUser : users) {
+            if (existingUser.getBrukernavn().equals(user.getBrukernavn())) {
+                return false;
+            }
+        }
+        // Hasher passordet før lagring
+        String hashedPassword = BCrypt.hashpw(user.getPassord(), BCrypt.gensalt());
+        user.setPassord(hashedPassword);
+
+        // Bruker lagt til vellykket
         users.add(user);
+        return true;
     }
 
     // Metode for å validere innlogging. Returnerer true om brukernavn og passord matcher
     public boolean validateLogin(String username, String password) {
         for (User user : users) {
-            if (user.getBrukernavn().equals(username) && user.getPassord().equals(password)) {
+            if (user.getBrukernavn().equals(username) && BCrypt.checkpw(password, user.getPassord())) {
                 return true;
             }
         }
