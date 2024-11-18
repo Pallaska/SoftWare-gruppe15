@@ -22,13 +22,21 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".service.RegisterActivity" />
-        <activity android:name=".service.HomeActivity" />
-        <activity android:name=".SettingsActivity" />
-        <activity android:name=".AdministrerEnheterActivity"/>
-        <activity android:name=".AccessControlActivity">
-
-
+        <activity
+                android:name=".RegisterActivity"
+                android:exported="false" />
+        <activity
+                android:name=".HomeActivity"
+                android:exported="false" />
+        <activity
+                android:name=".SettingsActivity"
+                android:exported="false" />
+        <activity
+                android:name=".AdministrerEnheterActivity"
+                android:exported="false" />
+        <activity
+                android:name=".AccessControlActivity"
+                android:exported="false" >
 
         </activity>
 

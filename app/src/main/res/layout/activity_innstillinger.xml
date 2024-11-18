@@ -63,11 +63,14 @@
                 android:contentDescription="Smart TV"/>
 
         <ImageView
+                android:id="@+id/tilgangskontrollImageView"
                 android:layout_width="124dp"
                 android:layout_height="125dp"
                 android:src="@drawable/ic_tilgang"
                 android:layout_margin="2dp"
-                android:contentDescription="Vaskemaskin"/>
+                android:contentDescription="Tilgangskontroll"
+                android:clickable="true"
+                android:focusable="true" />
     </LinearLayout>
 
     <!-- Section for Belysning -->
