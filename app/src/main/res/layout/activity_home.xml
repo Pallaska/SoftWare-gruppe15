@@ -17,7 +17,7 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
 
-    <!-- Favorites row -->
+    <!-- "Dine favoritter" overskrift -->
     <TextView
             android:id="@+id/headerTitle"
             android:layout_width="wrap_content"
@@ -30,6 +30,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="12dp" app:layout_constraintHorizontal_bias="0.065"/>
+
+    <!-- Innstillinger knapp -->
     <ImageView
             android:id="@+id/logoutButton"
             android:layout_width="41dp"
@@ -39,6 +41,8 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="12dp"
             android:layout_marginStart="368dp"/>
+
+    <!-- Favoritt enheter -->
     <LinearLayout
             android:layout_width="409dp"
             android:layout_height="151dp"
@@ -49,12 +53,15 @@
             android:layout_marginTop="16dp"
             android:gravity="center">
 
+        <!-- Enhet 1 -->
         <ImageView
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:src="@drawable/ic_bulb"
                 android:layout_margin="2dp"
                 android:contentDescription="Belysning"/>
+
+        <!-- Enhet 2 -->
         <ImageView
                 android:layout_width="130dp"
                 android:layout_height="128dp"
@@ -62,6 +69,7 @@
                 android:layout_margin="2dp"
                 android:contentDescription="Smart TV"/>
 
+        <!-- Enhet 3 -->
         <ImageView
                 android:layout_width="124dp"
                 android:layout_height="125dp"
@@ -70,22 +78,7 @@
                 android:contentDescription="Vaskemaskin"/>
     </LinearLayout>
 
-    <!-- Section for Belysning -->
-
-    <!-- Toggle switches for lighting -->
-    <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/lightingTitle"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="8dp">
-
-
-    </LinearLayout>
-
-    <!-- Buttons for access control -->
+    <!-- Knapper for adgangs enheter-->
     <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -97,7 +90,7 @@
             android:padding="8dp">
 
 
-        <!-- Inngangsdør Button -->
+        <!-- Adgang 1 -->
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -121,7 +114,7 @@
                     android:textColor="#000000" />
         </LinearLayout>
 
-        <!-- Bakdør Button -->
+        <!-- Adgang 2 -->
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -145,7 +138,7 @@
                     android:textColor="#000000" />
         </LinearLayout>
 
-        <!-- Garasje Button -->
+        <!-- Adgang 3 -->
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -169,7 +162,7 @@
                     android:textColor="#000000" />
         </LinearLayout>
 
-        <!-- Safe Button -->
+        <!-- Adgang 4 -->
         <LinearLayout
                 android:id="@+id/safeButton"
                 android:layout_width="match_parent"
@@ -193,15 +186,9 @@
                     android:backgroundTint="#B3E7FD"
                     android:textColor="#000000" />
         </LinearLayout>
-
-
     </LinearLayout>
 
-
-
-
-
-    <!-- Separator mellom Belysning og Adgang -->
+    <!-- Separator mellom Adgang og administrer enheter knappen -->
     <View
             android:id="@+id/sectionSeparator2"
             android:layout_width="0dp"
@@ -211,7 +198,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="550dp" />
-    <!-- Manage devices button -->
+
+    <!-- Administrer enheter knapp -->
     <Button
             android:id="@+id/manageDevicesButton"
             android:layout_width="wrap_content"
@@ -223,6 +211,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.497"
             android:layout_marginBottom="4dp"/>
+
+    <!-- "Belysning" tittel -->
     <TextView
             android:id="@+id/lightingTitle"
             android:layout_width="wrap_content"
@@ -247,7 +237,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="220dp" />
 
-    <!-- Access title (Adgang) placed below the separator -->
+    <!-- "Adgang" tittel -->
     <TextView
             android:id="@+id/accessTitle"
             android:layout_width="wrap_content"
@@ -262,6 +252,7 @@
             android:layout_marginTop="5dp"
             />
 
+    <!-- Innstillinger knapp -->
     <ImageView
             android:id="@+id/settingsIcon"
             android:layout_width="40dp"
@@ -272,6 +263,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="45dp"/>
 
+    <!-- Av/på knapper for belysning -->
     <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -282,7 +274,7 @@
             android:layout_marginTop="0dp"
             android:padding="8dp">
 
-        <!-- Soverom Switch -->
+        <!-- Belysning 1 -->
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -308,7 +300,7 @@
                     android:scaleY="1.5"/>
         </LinearLayout>
 
-        <!-- Bad Switch -->
+        <!-- Belysning 2 -->
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -333,7 +325,7 @@
                     android:scaleY="1.5"/>
         </LinearLayout>
 
-        <!-- Inngang Switch -->
+        <!-- Belysning 3 -->
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -358,7 +350,7 @@
                     android:scaleY="1.5"/>
         </LinearLayout>
 
-        <!-- Hage Switch -->
+        <!-- Belysning 4 -->
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

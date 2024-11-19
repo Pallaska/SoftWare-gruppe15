@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         EditText passwordField = findViewById(R.id.password);
         Button loginButton = findViewById(R.id.loginButton);
 
-        // Legg til klikklytter for innloggingsknappen
+        // Legger til klikklytter for innloggingsknappen
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,13 +51,13 @@ public class MainActivity extends AppCompatActivity {
                 if (authenticate.validateLogin(username, password)) {
                     Toast.makeText(MainActivity.this, "Innlogging vellykket!", Toast.LENGTH_SHORT).show();
 
-                    // Lagre innloggingsstatus
+                    // Lagrer innloggingsstatus
                     SharedPreferences preferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putBoolean("isLoggedIn", true);
                     editor.apply();
 
-                    // Naviger til HomeActivity
+                    // Navigerer til HomeActivity
                     Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                     startActivity(intent);
                     finish();
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Sjekk om brukeren allerede er logget inn
+        // Sjekker om brukeren allerede er logget inn
         SharedPreferences preferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         boolean isLoggedIn = preferences.getBoolean("isLoggedIn", false);
 
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
-        // Legg til klikklytter for "Registrer ny bruker"
+        // Legger til klikklytter for "Registrer ny bruker"
         TextView registerLink = findViewById(R.id.registerLink);
         registerLink.setOnClickListener(new View.OnClickListener() {
             @Override

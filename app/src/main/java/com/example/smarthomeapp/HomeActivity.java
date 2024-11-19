@@ -5,8 +5,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Button; // Hvis du bruker knapper
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
+
+/**
+ * HomeActivity fungerer som hjemsiden i appen.
+ * Brukeren kan logge ut, administrere enheter eller gå til innstillinger.
+ */
 
 public class HomeActivity extends AppCompatActivity {
     @Override
@@ -14,50 +19,45 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // Eksisterende kode for logoutButton
+        // Initialiserer logoutButton fra layouten
         ImageView logoutButton = findViewById(R.id.logoutButton);
 
+        // Setter en OnClickListener på logoutButton for å logge ut brukeren
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                // Tilbakestill innloggingsstatus
+                // Tilbakestiller innloggingsstatus i SharedPreferences
                 SharedPreferences preferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putBoolean("isLoggedIn", false);
                 editor.apply();
 
-                // Naviger til MainActivity
+                // Navigerer til innlogginsskjermen
                 Intent intent = new Intent(HomeActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
 
-        // Eksisterende kode for manageDevicesButton (hvis du har det)
+        // Initialiserer manageDevicesButton fra layouten
         Button manageDevicesButton = findViewById(R.id.manageDevicesButton);
 
+        // Setter en OnClickListener på manageDevicesButton for å navigere til administrasjonssiden
         manageDevicesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                // Start AdministrerEnheterActivity
                 Intent intent = new Intent(HomeActivity.this, AdministrerEnheterActivity.class);
                 startActivity(intent);
             }
         });
 
-        // **Ny kode for settingsIcon**
-
-        // Finn settingsIcon i layouten
+        // Initialiserer settingsIcon fra layouten
         ImageView settingsIcon = findViewById(R.id.settingsIcon);
 
-        // Sett en OnClickListener på settingsIcon
+        // Setter en OnClickListener på settingsIcon for å navigere til innstillingersiden
         settingsIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                // Start InnstillingerActivity
                 Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
                 startActivity(intent);
             }

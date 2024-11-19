@@ -15,9 +15,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Header tittel -->
-
-    <!-- Logout knapp -->
+    <!-- "Administrer enheter" overskrift -->
     <TextView
             android:id="@+id/headerTitle"
             android:layout_width="wrap_content"
@@ -30,6 +28,7 @@
             android:layout_marginTop="12dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.08"/>
+    <!-- Logg ut knapp -->
     <ImageView
             android:id="@+id/logoutButton"
             android:layout_width="41dp"
@@ -40,7 +39,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp" />
 
-    <!-- Bildeikoner under header -->
+    <!-- Favoritt enheter -->
     <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -51,18 +50,21 @@
             android:layout_marginTop="16dp"
             android:gravity="center_horizontal">
 
+        <!-- Favoritt 1 -->
         <ImageView
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:src="@drawable/ic_endrebelysning"
                 android:layout_margin="2dp"
                 android:contentDescription="Belysning"/>
+        <!-- Favoritt 2 -->
         <ImageView
                 android:layout_width="130dp"
                 android:layout_height="128dp"
                 android:src="@drawable/ic_endresmarttv"
                 android:layout_margin="2dp"
                 android:contentDescription="Smart TV"/>
+        <!-- Favoritt 3 -->
         <ImageView
                 android:layout_width="124dp"
                 android:layout_height="125dp"
@@ -202,9 +204,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Innstillinger ikon -->
-
-    <!-- Søk etter enheter bilde -->
+    <!-- Søk etter enheter knapp -->
     <ImageView
             android:id="@+id/ic_soketterenheter"
             android:layout_width="400dp"

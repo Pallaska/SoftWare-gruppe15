@@ -6,38 +6,41 @@ import android.view.View;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * SettingsActivity håndterer innstillingersiden for appen.
+ */
+
 public class SettingsActivity extends AppCompatActivity {
 
+    // Knapp for å navigere tilbake til forrige aktivitet
     private ImageView backButton;
-    private ImageView tilgangskontrollImageView; // Legg til denne variabelen
+
+    // Knapp for å navigere til tilgangskontrollsiden
+    private ImageView tilgangskontrollImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_innstillinger);
 
-        // Finn backButton i layouten
+        // Initialiserer backButton fra layouten
         backButton = findViewById(R.id.logoutButton);
 
-        // Sett en OnClickListener på backButton
+        // Legger til en OnClickListener på backButton for å gå tilbake til hjemsiden
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                // Avslutt denne aktiviteten for å gå tilbake til forrige aktivitet
                 finish();
             }
         });
 
-        // **Finn tilgangskontrollImageView i layouten**
+        // Initialiserer tilgangskontrollImageView fra layouten
         tilgangskontrollImageView = findViewById(R.id.tilgangskontrollImageView);
 
-        // **Sett en OnClickListener på tilgangskontrollImageView**
+        // Legger til en OnClickListener på tilgangskontrollImageView for å åpne tilgangskontrollsiden
         tilgangskontrollImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                // Start TilgangskontrollActivity
                 Intent intent = new Intent(SettingsActivity.this, AccessControlActivity.class);
                 startActivity(intent);
             }

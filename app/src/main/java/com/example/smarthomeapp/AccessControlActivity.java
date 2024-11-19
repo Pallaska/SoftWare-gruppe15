@@ -4,41 +4,43 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.ImageView; // Legg til denne importen
+import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
+
+/**
+ * AccessControlActivity håndterer funksjonalitet for tilgangskontrollsiden i appen.
+ * Brukeren kan vise en tilgangskode og logge ut via denne aktiviteten.
+ */
 
 public class AccessControlActivity extends AppCompatActivity {
 
-    private TextView hiddenCodeField;
-    private Button showAccessCodeButton;
-    private ImageView logoutButton; // Legg til denne variabelen
+    private TextView hiddenCodeField; // TextView som viser tilgangskoden (skjult som standard)
+    private Button showAccessCodeButton; // Knapp for å vise tilgangskoden
+    private ImageView logoutButton; // Bildeikon som fungerer som en logg ut knapp
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tilgangskontroll);
 
-        // Initialiser komponenter
+        // Initialiserer UI-elementene definert i XML-layouten
         hiddenCodeField = findViewById(R.id.hiddenCodeField);
         showAccessCodeButton = findViewById(R.id.showAccessCodeButton);
-        logoutButton = findViewById(R.id.logoutButton); // Finn logoutButton
+        logoutButton = findViewById(R.id.logoutButton); // Finner logoutButton
 
-        // Legg til funksjonalitet for "Vis tilgangskode"-knappen
+
         showAccessCodeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                // Her kan du legge til logikken for å vise koden
-                hiddenCodeField.setText("1234-5678"); // Eksempel på en tilgangskode
+                // Viser en forhåndsdefinert tilgangskode i TextView
+                hiddenCodeField.setText("1234-5678"); // Tallet er et eksempel på en tilgangskode
             }
         });
 
-        // Legg til OnClickListener for logoutButton
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                // Avslutt denne aktiviteten for å gå tilbake til forrige aktivitet
+                // Avslutter denne aktiviteten for å gå tilbake til hjemsiden
                 finish();
             }
         });

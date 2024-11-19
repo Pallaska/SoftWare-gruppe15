@@ -9,7 +9,7 @@
         android:background="#B3E7FD"
         tools:context=".MainActivity">
 
-    <!-- Logo -->
+    <!-- "Smart Connect" logo -->
     <TextView
             android:id="@+id/logo"
             android:layout_width="wrap_content"
@@ -25,7 +25,7 @@
             app:layout_constraintBottom_toTopOf="@+id/cardView"
             android:layout_marginBottom="0dp" />
 
-    <!-- CardView container med runde hjørner -->
+    <!-- CardView container med runde hjørner, samler alle funksjoner på et sted -->
     <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
             android:layout_width="0dp"
@@ -45,7 +45,7 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
-            <!-- Statusmelding -->
+            <!-- "Registrer ny bruker" statusmelding -->
             <TextView
                     android:id="@+id/statusMessage"
                     android:layout_width="wrap_content"
@@ -57,7 +57,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="16dp" />
 
-            <!-- Brukernavn Input -->
+            <!-- Brukernavn Input felt -->
             <EditText
                     android:id="@+id/username"
                     android:layout_width="match_parent"
@@ -69,7 +69,7 @@
                     android:fontFamily="@font/poppins_bold"
                     android:layout_marginBottom="16dp" />
 
-            <!-- Passord Input -->
+            <!-- Passord Input felt -->
             <EditText
                     android:id="@+id/password"
                     android:layout_width="match_parent"
@@ -82,7 +82,7 @@
                     android:fontFamily="@font/poppins_bold"
                     android:layout_marginBottom="16dp" />
 
-            <!-- Fødselsdato Input med DatePickerDialog -->
+            <!-- Fødselsdato Input felt ved bruk av DatePickerDialog -->
             <EditText
                     android:id="@+id/birthdate"
                     android:layout_width="match_parent"
@@ -111,7 +111,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="16dp"/>
 
-            <!-- Har du allerede en bruker tekst -->
+            <!-- Har du allerede en bruker knapp, som fører brukeren tilbake til logg inn siden -->
             <TextView
                     android:id="@+id/alreadyHaveAccount"
                     android:layout_width="wrap_content"
@@ -127,10 +127,9 @@
             />
 
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
 
-    <!-- Footer -->
+    <!-- Merkevare stempel på bunn -->
     <TextView
             android:id="@+id/footer"
             android:layout_width="wrap_content"

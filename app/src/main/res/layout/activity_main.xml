@@ -9,7 +9,7 @@
         android:background="#B3E7FD"
         tools:context=".MainActivity">
 
-        <!-- Logo -->
+        <!-- "Smart Connect" logo -->
         <TextView
                 android:id="@+id/logo"
                 android:layout_width="wrap_content"
@@ -25,7 +25,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/cardView"
                 android:layout_marginBottom="0dp" />
 
-        <!-- CardView container med runde hjørner -->
+        <!-- CardView container med runde hjørner, samler alle funksjoner på et sted -->
         <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
                 android:layout_width="0dp"
@@ -45,7 +45,7 @@
                         android:orientation="vertical"
                         android:padding="16dp">
 
-                        <!-- Statusmelding -->
+                        <!-- "Du er logget ut" statusmelding -->
                         <TextView
                                 android:id="@+id/statusMessage"
                                 android:layout_width="wrap_content"
@@ -59,7 +59,7 @@
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginBottom="16dp" />
 
-                        <!-- Brukernavn Input -->
+                        <!-- Brukernavn Input felt -->
                         <EditText
                                 android:id="@+id/username"
                                 android:layout_width="match_parent"
@@ -71,7 +71,7 @@
                                 android:fontFamily="@font/poppins_bold"
                                 android:layout_marginBottom="16dp" />
 
-                        <!-- Passord Input -->
+                        <!-- Passord Input felt -->
                         <EditText
                                 android:id="@+id/password"
                                 android:layout_width="match_parent"
@@ -84,7 +84,7 @@
                                 android:fontFamily="@font/poppins_bold"
                                 android:layout_marginBottom="16dp" />
 
-                        <!-- Logg inn Knapp -->
+                        <!-- Logg på knapp -->
                         <androidx.appcompat.widget.AppCompatButton
                                 android:id="@+id/loginButton"
                                 android:layout_width="150dp"
@@ -98,7 +98,7 @@
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginBottom="16dp"/>
 
-                        <!-- Registrer ny bruker tekst -->
+                        <!-- Registrer ny bruker knapp -->
                         <TextView
                                 android:id="@+id/registerLink"
                                 android:layout_width="wrap_content"
@@ -113,10 +113,9 @@
                         />
 
                 </LinearLayout>
-
         </androidx.cardview.widget.CardView>
 
-        <!-- Footer -->
+        <!-- Merkevare stempel på bunn -->
         <TextView
                 android:id="@+id/footer"
                 android:layout_width="wrap_content"
