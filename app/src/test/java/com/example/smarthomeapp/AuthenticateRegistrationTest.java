@@ -8,6 +8,7 @@ import com.example.smarthomeapp.service.Authenticate;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mindrot.jbcrypt.BCrypt;
 import org.mockito.Mockito;
 
 import java.io.ByteArrayInputStream;
@@ -54,6 +55,95 @@ public class AuthenticateRegistrationTest {
         assertTrue("Registrering bør lykkes med gyldige data", result);
         assertEquals("Brukerlisten skal inneholde 1 bruker", 1, authenticate.getUsers().size());
         assertEquals("Brukernavnet skal være 'NyBruker'", "NyBruker", authenticate.getUsers().get(0).getBrukernavn());
+
+        // Verifiserer at passordet er hashet
+        String storedPassword = authenticate.getUsers().get(0).getPassord();
+        assertNotEquals("Passordet skal være hashet og ikke i klartekst", "nyttPassord123", storedPassword);
+        assertTrue("Passordet skal validere med BCrypt", BCrypt.checkpw("nyttPassord123", storedPassword));
+    }
+
+    // Test for registrering av bruker der formatet på eposten er ugyldig
+    @Test
+    public void testRegisterNewUser_Failure_InvalidEmail() {
+        User newUser = new User(
+                411,
+                "BrukerMedUgyldigEmail",
+                "passord123",
+                "02022000",
+                "standard",
+                "ugyldigemail", // Ugyldig e-post
+                "Ugyldiggata 2",
+                12345678
+        );
+
+        boolean result = authenticate.addUser(newUser);
+
+        assertFalse("Registrering bør mislykkes med ugyldig e-postformat", result);
+        assertEquals("Brukerlisten skal være tom", 0, authenticate.getUsers().size());
+    }
+
+    // Test der passordet er for svakt
+    @Test
+    public void testRegisterNewUser_Failure_WeakPassword() {
+        User newUser = new User(
+                412,
+                "BrukerMedSvaktPassord",
+                "123", // Svakt passord
+                "03032000",
+                "standard",
+                "gyldig@eksempel.no",
+                "Gyldiggata 3",
+                12345678
+        );
+
+        boolean result = authenticate.addUser(newUser);
+
+        assertFalse("Registrering bør mislykkes med for svakt passord", result);
+        assertEquals("Brukerlisten skal være tom", 0, authenticate.getUsers().size());
+    }
+
+    // Test for passord som er for langt
+    @Test
+    public void testRegisterNewUser_Failure_PasswordTooLong() {
+        String longPassword = "a".repeat(101);
+
+        User newUser = new User(
+                414,
+                "GyldigBruker",
+                longPassword,
+                "05052000",
+                "standard",
+                "gyldig@eksempel.no",
+                "Gyldiggata 5",
+                12345678
+        );
+
+        boolean result = authenticate.addUser(newUser);
+
+        assertFalse("Registrering bør mislykkes når passordet er for langt", result);
+        assertEquals("Brukerlisten skal være tom", 0, authenticate.getUsers().size());
+    }
+
+    // Test for brukernavn som er for langt
+    @Test
+    public void testRegisterNewUser_Failure_UsernameTooLong() {
+        String longUsername = "a".repeat(51);
+
+        User newUser = new User(
+                413,
+                longUsername,
+                "passord123",
+                "04042000",
+                "standard",
+                "gyldig@eksempel.no",
+                "Gyldiggata 4",
+                12345678
+        );
+
+        boolean result = authenticate.addUser(newUser);
+
+        assertFalse("Registrering bør mislykkes når brukernavnet er for langt", result);
+        assertEquals("Brukerlisten skal være tom", 0, authenticate.getUsers().size());
     }
 
     // Test for registrering av bruker der brukernavnet eksisterer fra før

@@ -48,6 +48,46 @@ public class Authenticate {
         }
     }
 
+    // Metode for validering av epostadresse
+    private boolean isValidEmail(String email) {
+        if (email == null || email.isEmpty()) {
+            return false;
+        }
+        String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
+        return email.matches(emailRegex);
+    }
+
+    // Metode for validering av brukernavn
+    private boolean isValidUsername(String username) {
+        if (username == null || username.isEmpty()) {
+            return false;
+        }
+        // Sjekker om brukernavnet er for langt (maks 50 tegn)
+        if (username.length() > 50) {
+            return false;
+        }
+        // Sjekker om brukernavnet allerede er i bruk
+        for (User existingUser : users) {
+            if (existingUser.getBrukernavn().equals(username)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // Metode for validering av passordstyrke
+    private boolean isValidPassword(String password) {
+        if (password == null || password.isEmpty()) {
+            return false;
+        }
+        // Sjekker om passordet er for kort (minst 6 tegn)
+        if (password.length() < 6) {
+            return false;
+        }
+        // Sjekker om passordet er for langt (maks 100 tegn)
+        return password.length() <= 100;
+    }
+
     // Få listen over brukere
     public List<User> getUsers() {
         return users;
@@ -55,16 +95,20 @@ public class Authenticate {
 
     // Legge til bruker
     public boolean addUser(User user) {
-        // Sjekker om brukernavnet er tomt
-        if (user.getBrukernavn() == null || user.getBrukernavn().isEmpty()) {
+        // Validerer brukernavn
+        if (!isValidUsername(user.getBrukernavn())) {
             return false;
         }
-        // Sjekker om brukernavn allerede er i bruk
-        for (User existingUser : users) {
-            if (existingUser.getBrukernavn().equals(user.getBrukernavn())) {
-                return false;
-            }
+
+        // Validerer epost
+        if (!isValidEmail(user.getEmail())) {
+            return false;
         }
+
+        if (!isValidPassword(user.getPassord())) {
+            return false;
+        }
+
         // Hasher passordet før lagring
         String hashedPassword = BCrypt.hashpw(user.getPassord(), BCrypt.gensalt());
         user.setPassord(hashedPassword);
@@ -95,6 +139,16 @@ public class Authenticate {
 
         for (User user : users) {
             if (user.getBrukerID() == brukerID && BCrypt.checkpw(currentPassword, user.getPassord())) {
+
+                // Validerer nytt brukernavn
+                if (!isValidUsername(newUsername)) {
+                    return false;
+                }
+
+                // Validerer nytt passord
+                if (!isValidPassword(newPassword)) {
+                    return false;
+                }
 
                 user.setBrukernavn(newUsername);
 

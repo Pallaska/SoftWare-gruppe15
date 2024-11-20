@@ -68,7 +68,7 @@ public class AuthenticateDataTest {
         assertNotNull("Bruker med ID 400 skal finnes", hans);
         assertEquals("Brukernavnet skal være 'Hans'", "Hans", hans.getBrukernavn());
         assertEquals("E-posten skal være 'testmail@live.no'", "testmail@live.no", hans.getEmail());
-        // Legg til flere asserter etter behov
     }
+
 }
 
