@@ -2,6 +2,7 @@ package com.example.smarthomeapp.service;
 import android.content.Context;
 import com.example.smarthomeapp.json.DataKonvertering;
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 import java.io.InputStream;
@@ -43,7 +44,7 @@ public class Authenticate {
             if (dataContainer != null && dataContainer.brukere != null) {
                 users.addAll(dataContainer.brukere);
             }
-        } catch (IOException e) {
+        } catch (IOException | JsonSyntaxException e) {
             e.printStackTrace();
         }
     }
