@@ -129,6 +129,11 @@ public class Authenticate {
         return false;
     }
 
+    public void setDataKonvertering(DataKonvertering dataKonvertering) {
+        this.datakonvertering = dataKonvertering;
+    }
+
+
     // Klasse for å holde json-data
     public static class DataContainer {
         List<User> brukere;
