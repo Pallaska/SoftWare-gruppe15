@@ -1,10 +1,8 @@
 package com.example.smarthomeapp.json;
 import com.example.smarthomeapp.model.Enhet;
 import com.example.smarthomeapp.model.User;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
+import com.google.gson.*;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +14,7 @@ public class DataKonvertering {
     // Metode som leser brukere fra JSON og returnerer en liste med bruker objekter
     public List<User> hentBrukere() {
         List<User> brukereList = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("Data.json"))) {
+        try (BufferedReader br = new BufferedReader(getFileReader("Data.json"))) {
             StringBuilder jsonStringBuilder = new StringBuilder();
             String linje;
             while ((linje = br.readLine()) != null) {
@@ -35,7 +33,7 @@ public class DataKonvertering {
                 User bruker = G.fromJson(jsonArray.get(i), User.class);
                 brukereList.add(bruker);
             }
-        } catch (IOException e) {
+        } catch (IOException | JsonSyntaxException e) {
             e.printStackTrace();
         }
         return brukereList;
@@ -45,6 +43,13 @@ public class DataKonvertering {
     public void leggTilBruker(User nyBruker) {
         try {
             List<User> brukereList = hentBrukere();
+
+            // Sjekker for duplikat brukerID eller brukernavn
+            for (User bruker : brukereList) {
+                if (bruker.getBrukerID() == nyBruker.getBrukerID() || bruker.getBrukernavn().equals(nyBruker.getBrukernavn())) {
+                    return;
+                }
+            }
 
             // Hash passordet
             String hashedPassword = BCrypt.hashpw(nyBruker.getPassord(), BCrypt.gensalt());
@@ -62,10 +67,9 @@ public class DataKonvertering {
             // Skriver den oppdaterte informasjonen til JSON filen
             JsonObject jsonObject = new JsonObject();
             jsonObject.add("brukere", oppdatertJsonArray);
+            String jsonData = G.toJson(jsonObject);
 
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("Data.json"))) {
-                G.toJson(jsonObject, writer);
-            }
+            writeToFile("Data.json", jsonData);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -121,6 +125,16 @@ public class DataKonvertering {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public Reader getFileReader(String filnavn) throws FileNotFoundException {
+        return new FileReader(filnavn);
+    }
+
+    public void writeToFile(String filnavn, String data) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filnavn))) {
+            writer.write(data);
         }
     }
 }
