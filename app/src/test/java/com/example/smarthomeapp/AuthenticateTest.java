@@ -76,4 +76,26 @@ public class AuthenticateTest {
         boolean result = authenticate.validateLogin("FeilBruker", "passord123");
         assertFalse("Innlogging bør mislykkes med feil brukernavn", result);
     }
+
+    // Test som sjekker etter null-verdi i brukernavn og passord
+    @Test
+    public void testValidateLogin_Failure_NullValues() {
+        boolean result = authenticate.validateLogin(null, null);
+        assertFalse("Innlogging bør mislykkes når brukernavn og passord er null", result);
+    }
+
+    // Test som sjekker etter tomme strenger i brukernavn og passord
+    @Test
+    public void testValidateLogin_Failure_EmptyStrings() {
+        boolean result = authenticate.validateLogin("", "");
+        assertFalse("Innlogging bør mislykkes når brukernavn og passord er tomme", result);
+    }
+
+    // Test som sjekker case-sensitivitet i passord. Passordet skal ikke godkjennes om bokstavene er store/små feilaktig
+    @Test
+    public void testValidateLogin_Failure_CaseSensitivityPassword() {
+        boolean result = authenticate.validateLogin("Hans", "Passord123");
+        assertFalse("Innlogging bør mislykkes når passordet har feil store/små bokstaver", result);
+    }
+
 }
