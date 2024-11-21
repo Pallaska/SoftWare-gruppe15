@@ -23,9 +23,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Dine favoritter"
+            android:textColor="#000000"
             android:textSize="20sp"
             android:fontFamily="@font/poppins_bold"
-            android:textColor="#000000"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -103,8 +103,7 @@
                     android:text="Inngangsdør"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"
-                    android:layout_weight="1"
-                    android:textColor="#000000" />
+                    android:layout_weight="1"/>
 
             <Button
                     android:layout_width="wrap_content"
@@ -127,8 +126,7 @@
                     android:text="Bakdør"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"
-                    android:layout_weight="1"
-                    android:textColor="#000000" />
+                    android:layout_weight="1"/>
 
             <Button
                     android:layout_width="wrap_content"
@@ -151,8 +149,7 @@
                     android:text="Garasje"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"
-                    android:layout_weight="1"
-                    android:textColor="#000000" />
+                    android:layout_weight="1"/>
 
             <Button
                     android:layout_width="wrap_content"
@@ -176,8 +173,7 @@
                     android:text="Safe"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"
-                    android:layout_weight="1"
-                    android:textColor="#000000" />
+                    android:layout_weight="1"/>
 
             <Button
                     android:layout_width="wrap_content"
@@ -193,7 +189,7 @@
             android:id="@+id/sectionSeparator2"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:background="#242424"
+            android:background="@color/separator_color"
             app:layout_constraintTop_toBottomOf="@id/lightingTitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -220,7 +216,6 @@
             android:text="Belysning"
             android:textSize="18sp"
             android:fontFamily="@font/poppins_bold"
-            android:textColor="#000000"
             app:layout_constraintTop_toBottomOf="@id/topBackground"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -231,7 +226,7 @@
             android:id="@+id/sectionSeparator"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:background="#242424"
+            android:background="@color/separator_color"
             app:layout_constraintTop_toBottomOf="@id/lightingTitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -245,7 +240,6 @@
             android:text="Adgang"
             android:textSize="18sp"
             android:fontFamily="@font/poppins_bold"
-            android:textColor="#000000"
             app:layout_constraintTop_toBottomOf="@id/sectionSeparator"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -287,8 +281,7 @@
                     android:text="Soverom"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"
-                    android:layout_weight="1"
-                    android:textColor="#000000"/>
+                    android:layout_weight="1"/>
 
             <Switch
                     android:id="@+id/bedroomSwitch"
@@ -313,8 +306,7 @@
                     android:text="Bad"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"
-                    android:layout_weight="1"
-                    android:textColor="#000000"/>
+                    android:layout_weight="1"/>
 
             <Switch
                     android:id="@+id/bathroomSwitch"
@@ -338,8 +330,7 @@
                     android:text="Inngang"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"
-                    android:layout_weight="1"
-                    android:textColor="#000000"/>
+                    android:layout_weight="1"/>
 
             <Switch
                     android:id="@+id/entranceSwitch"
@@ -363,8 +354,7 @@
                     android:text="Hage"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"
-                    android:layout_weight="1"
-                    android:textColor="#000000"/>
+                    android:layout_weight="1"/>
 
             <Switch
                     android:id="@+id/gardenSwitch"

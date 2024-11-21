@@ -1,7 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
     <style name="Base.Theme.SmartHomeApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <!-- Mørk modus -->
+        <item name="android:textColor">#FFFFFF</item> <!-- Hvit tekst -->
+        <item name="android:windowBackground">#212121</item> <!-- Mørk bakgrunn -->
     </style>
+
+    <style name="Theme.SmartHomeApp" parent="Base.Theme.SmartHomeApp" />
 </resources>

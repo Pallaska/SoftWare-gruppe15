@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="separator_color">#242424</color> <!-- Svart for lys modus -->
+
+    <color name="top_background_color">#FFFFFF</color> <!-- Hvit bakgrunn -->
+
+    <color name="button_background_color">#B3E7FD</color> <!-- Original blåfarge -->
+
+
+
 </resources>

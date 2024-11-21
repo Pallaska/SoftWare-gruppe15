@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="top_background_color">#B2F0FF</color> <!-- Blå bakgrunn -->
+
+    <color name="separator_color">#FFFFFF</color> <!-- Hvit for mørk modus -->
+
+    <color name="button_background_color">#FFFFFF</color> <!-- Hvit for mørk modus -->
+</resources>
+
