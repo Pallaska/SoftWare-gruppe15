@@ -5,8 +5,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import org.mindrot.jbcrypt.BCrypt;
-import com.google.gson.*;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +13,10 @@ import java.util.Objects;
 public class DataKonvertering {
     public static Gson G = new GsonBuilder().setPrettyPrinting().create();
 
-    // Metode som leser brukere fra JSON og returnerer en liste med bruker objekter
-    public List<User> hentBrukere() {
-        List<User> brukereList = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(getFileReader("Data.json"))) {
+    // Metode som leser objekter fra JSON og returnerer en liste med hentede objekter
+    public <T> List<Object> hentFraJson(String kategori, Class<T> klasseNavn, String filnavn) {
+        List<Object> hentetListe = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(filnavn))) {
             StringBuilder jsonStringBuilder = new StringBuilder();
             String linje;
             while ((linje = br.readLine()) != null) {
@@ -37,7 +35,7 @@ public class DataKonvertering {
                 Object hentet = G.fromJson(jsonArray.get(i), klasseNavn);
                 hentetListe.add(hentet);
             }
-        } catch (IOException | JsonSyntaxException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return hentetListe;
@@ -47,35 +45,11 @@ public class DataKonvertering {
     public <T> void leggTilJson(Object ny, String kategori, Class<T> klasseNavn, String filnavn) {
         List<Object> hentetListe = hentFraJson(kategori, klasseNavn, filnavn);
 
-            // Sjekker for duplikat brukerID eller brukernavn
-            for (User bruker : brukereList) {
-                if (bruker.getBrukerID() == nyBruker.getBrukerID() || bruker.getBrukernavn().equals(nyBruker.getBrukernavn())) {
-                    return;
-                }
-            }
-
+        if (Objects.equals(kategori, "bruker")) {
             // Hash passordet
             User nyBruker = (User)ny;
             String hashedPassword = BCrypt.hashpw(nyBruker.getPassord(), BCrypt.gensalt());
             nyBruker.setPassord(hashedPassword); // linket med setPassord-metoden er lagt til i User.java
-
-            brukereList.add(nyBruker);
-
-            // Konverterer listen tilbake til en JSON array
-            JsonArray oppdatertJsonArray = new JsonArray();
-            for (User bruker : brukereList) {
-                JsonObject brukerJson = G.toJsonTree(bruker).getAsJsonObject();
-                oppdatertJsonArray.add(brukerJson);
-            }
-
-            // Skriver den oppdaterte informasjonen til JSON filen
-            JsonObject jsonObject = new JsonObject();
-            jsonObject.add("brukere", oppdatertJsonArray);
-            String jsonData = G.toJson(jsonObject);
-
-            writeToFile("Data.json", jsonData);
-        } catch (IOException e) {
-            e.printStackTrace();
         }
         // Legger til nytt objekt til listen
         hentetListe.add(ny);
@@ -102,16 +76,6 @@ public class DataKonvertering {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }
-    }
-
-    public Reader getFileReader(String filnavn) throws FileNotFoundException {
-        return new FileReader(filnavn);
-    }
-
-    public void writeToFile(String filnavn, String data) throws IOException {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filnavn))) {
-            writer.write(data);
         }
     }
 }

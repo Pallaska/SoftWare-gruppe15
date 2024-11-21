@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "com.example.smarthomeapp"
-    compileSdk = 35
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.smarthomeapp"
@@ -46,11 +46,7 @@ dependencies {
     implementation(libs.navigation.ui)
     implementation(libs.firebase.firestore)
     implementation(libs.jbcrypt)
-
     testImplementation(libs.junit)
-    testImplementation(libs.mockito.core)
-    testImplementation(libs.androidx.test.core)
-
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
