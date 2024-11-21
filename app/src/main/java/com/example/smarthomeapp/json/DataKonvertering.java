@@ -1,9 +1,6 @@
 package com.example.smarthomeapp.json;
 import com.example.smarthomeapp.model.User;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
+import com.google.gson.*;
 import org.mindrot.jbcrypt.BCrypt;
 import java.io.*;
 import java.util.ArrayList;
@@ -14,8 +11,8 @@ public class DataKonvertering {
     public static Gson G = new GsonBuilder().setPrettyPrinting().create();
 
     // Metode som leser objekter fra JSON og returnerer en liste med hentede objekter
-    public <T> List<Object> hentFraJson(String kategori, Class<T> klasseNavn, String filnavn) {
-        List<Object> hentetListe = new ArrayList<>();
+    public <T> List<T> hentFraJson(String kategori, Class<T> klasseNavn, String filnavn) {
+        List<T> hentetListe = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(filnavn))) {
             StringBuilder jsonStringBuilder = new StringBuilder();
             String linje;
@@ -29,24 +26,28 @@ public class DataKonvertering {
             JsonObject jsonObject = G.fromJson(jsonString, JsonObject.class);
             JsonArray jsonArray = jsonObject.getAsJsonArray(kategori);
 
-            // Konverterer hvert element i bruker array-en til et objekt
+            // Konverterer hvert element i bruker array-en til et objekt T
             // dvs. strukturen som er definert i objektens klasse
             for (int i = 0; i < jsonArray.size(); i++) {
-                Object hentet = G.fromJson(jsonArray.get(i), klasseNavn);
+                T hentet = G.fromJson(jsonArray.get(i), klasseNavn);
                 hentetListe.add(hentet);
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (JsonSyntaxException e) {
+            // Håndterer JSON-parsing unntak
+            e.printStackTrace();
+            return hentetListe;
         }
         return hentetListe;
     }
 
     // Metode for å legge til noe nytt til et kategori i JSON filen
-    public <T> void leggTilJson(Object ny, String kategori, Class<T> klasseNavn, String filnavn) {
-        List<Object> hentetListe = hentFraJson(kategori, klasseNavn, filnavn);
+    public <T> void leggTilJson(T ny, String kategori, Class<T> klasseNavn, String filnavn) {
+        List<T> hentetListe = hentFraJson(kategori, klasseNavn, filnavn);
 
         if (Objects.equals(kategori, "bruker")) {
-            // Hash passordet
+            // Hasher passordet
             User nyBruker = (User)ny;
             String hashedPassword = BCrypt.hashpw(nyBruker.getPassord(), BCrypt.gensalt());
             nyBruker.setPassord(hashedPassword); // linket med setPassord-metoden er lagt til i User.java
@@ -58,7 +59,7 @@ public class DataKonvertering {
         objektTilJson(hentetListe, kategori, filnavn);
     }
 
-    public void objektTilJson(List<Object> hentetListe, String kategori, String filnavn) {
+    public <T> void objektTilJson(List<T> hentetListe, String kategori, String filnavn) {
         try {
             // Konverterer listen tilbake til en JSON array
             JsonArray oppdatertJsonArray = new JsonArray();

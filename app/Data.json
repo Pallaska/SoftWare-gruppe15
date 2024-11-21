@@ -1,0 +1,24 @@
+{
+  "brukere": [
+    {
+      "brukerID": 400,
+      "brukernavn": "Anna",
+      "passord": "$2a$10$yT8b6oImpdqP80mTdhrW2.Splwrf8V0VqhTJ2PdHwbZL7rbCSH3Kq",
+      "fodselsdato": "15102000",
+      "rettigheter": "12345",
+      "email": "hans@example.com",
+      "adresse": "basestien 22",
+      "telefon": 34724923
+    },
+    {
+      "brukerID": 401,
+      "brukernavn": "Anna",
+      "passord": "$2a$10$/0uBZ/2krYv.S9pQk20couZvfK8G.sn9lU4Mt7NkJ2rNda.h6gD1e",
+      "fodselsdato": "01011990",
+      "rettigheter": "12345",
+      "email": "anna@example.com",
+      "adresse": "noen gate 1",
+      "telefon": 12345678
+    }
+  ]
+}
