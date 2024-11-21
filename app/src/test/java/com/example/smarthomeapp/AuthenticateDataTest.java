@@ -107,47 +107,4 @@ public class AuthenticateDataTest {
         // Sletter den midlertidige filen
         corruptedFile.delete();
     }
-/*
-    // Test for å validere innlogging
-    @Test
-    public void testValidateLogin() {
-        // Sjekker gyldig innlogging
-        boolean validLogin = authenticate.validateLogin("Hans", "passord123");
-        assertTrue("Innlogging bør være gyldig for riktig brukernavn og passord", validLogin);
-
-        // Sjekker innlogging med feil passord
-        boolean invalidLogin = authenticate.validateLogin("Hans", "feilpassord");
-        assertFalse("Innlogging bør være ugyldig for feil passord", invalidLogin);
-
-        // Sjekker innlogging med feil brukernavn
-        boolean invalidUser = authenticate.validateLogin("UkjentBruker", "passord123");
-        assertFalse("Innlogging bør være ugyldig for ukjent brukernavn", invalidUser);
-    }
-
-    // Test for å oppdatere brukerinformasjon
-    @Test
-    public void testUpdateCredentials() {
-        // Forsøker å oppdatere legitimasjon med riktig nåværende passord
-        boolean updated = authenticate.updateCredentials(400, "passord123", "HansNy", "nyttPassord");
-        assertTrue("Oppdatering av legitimasjon bør lykkes med riktig passord", updated);
-
-        // Henter oppdatert bruker og sjekker endringene
-        List<User> users = authenticate.getUsers();
-        User updatedUser = null;
-        for (User user : users) {
-            if (user.getBrukerID() == 400) {
-                updatedUser = user;
-                break;
-            }
-        }
-        assertNotNull("Oppdatert bruker bør finnes", updatedUser);
-        assertEquals("Brukernavnet skal være oppdatert til 'HansNy'", "HansNy", updatedUser.getBrukernavn());
-        assertTrue("Passordet skal være oppdatert", BCrypt.checkpw("nyttPassord", updatedUser.getPassord()));
-
-        // Forsøker å oppdatere med feil passord
-        boolean updateFailed = authenticate.updateCredentials(400, "feilPassord", "HansFeil", "feilPassord");
-        assertFalse("Oppdatering av legitimasjon bør mislykkes med feil passord", updateFailed);
-    }
-
- */
 }
