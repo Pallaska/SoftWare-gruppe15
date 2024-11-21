@@ -3,7 +3,6 @@ import java.util.List;
 import com.example.smarthomeapp.json.DataKonvertering;
 import com.example.smarthomeapp.model.User;
 import org.mindrot.jbcrypt.BCrypt;
-import android.content.Context;
 
 // Klasse for autentisering, lasting av brukere fra json og validering
 public class Authenticate {
@@ -11,8 +10,10 @@ public class Authenticate {
     DataKonvertering dataKonvertering = new DataKonvertering();
     // Liste som lagrer data om brukere når de er lastet fra json
     private List<User> users;
+    private String dataFilePath;
 
     public Authenticate(String dataFilePath) {
+        this.dataFilePath = dataFilePath;
         users = dataKonvertering.hentFraJson("brukere", User.class, dataFilePath);
     }
 
@@ -22,17 +23,48 @@ public class Authenticate {
     }
 
     // Legge til bruker
-    public void addUser(User user) {
+    public boolean addUser(User newUser) {
+        // Validerer brukernavn, passord og e-post
+        if (newUser.getBrukernavn() == null || newUser.getPassord() == null || newUser.getEmail() == null ||
+                newUser.getBrukernavn().isEmpty() || newUser.getPassord().isEmpty() || newUser.getEmail().isEmpty()) {
+            return false;
+        }
+
+        // Sjekker om brukernavnet allerede eksisterer
+        for (User user : users) {
+            if (user.getBrukernavn().equals(newUser.getBrukernavn())) {
+                return false;
+            }
+        }
+
+        // Validerer e-postformat
+        if (!isValidEmail(newUser.getEmail())) {
+            return false;
+        }
+
+        // Validerer passordlengde (mellom 6 og 20 tegn)
+        if (newUser.getPassord().length() < 6 || newUser.getPassord().length() > 20) {
+            return false;
+        }
+
+        // Validerer brukernavnlengde (maks 15 tegn)
+        if (newUser.getBrukernavn().length() > 15) {
+            return false;
+        }
+
         // Hasher passordet før lagring
-        String hashedPassword = BCrypt.hashpw(user.getPassord(), BCrypt.gensalt());
-        user.setPassord(hashedPassword);
+        String hashedPassword = BCrypt.hashpw(newUser.getPassord(), BCrypt.gensalt());
+        newUser.setPassord(hashedPassword);
 
-        // Legg til brukeren i listen
-        users.add(user);
+        // Legger til brukeren i listen
+        users.add(newUser);
 
-        // Lagre oppdatert liste til JSON-filen
-        dataKonvertering.objektTilJson(users, "brukere", "Data.json");
+        // Lagrer oppdatert liste til JSON-filen
+        dataKonvertering.objektTilJson(users, "brukere", dataFilePath);
+
+        return true;
     }
+
     // Metode for å validere innlogging. Returnerer true om brukernavn og passord matcher
     public boolean validateLogin(String username, String password) {
         if (username == null || password == null || username.isEmpty() || password.isEmpty()) {
@@ -62,6 +94,12 @@ public class Authenticate {
             }
         }
         return false;
+    }
+
+    // Metode som validerer email
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+        return email.matches(emailRegex);
     }
 }
 
