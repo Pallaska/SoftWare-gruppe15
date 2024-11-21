@@ -7,30 +7,36 @@ import android.content.Context;
 
 // Klasse for autentisering, lasting av brukere fra json og validering
 public class Authenticate {
-    DataKonvertering dataKonvertering = new DataKonvertering();
-    private Context context;
-    // Liste som lagrer data om brukere når de er lastet fra json
-    private List<Object> users;
 
-    public Authenticate(Context context) {
-        this.context = context;
-        users = dataKonvertering.hentFraJson("A", User.class, "C");
+    DataKonvertering dataKonvertering = new DataKonvertering();
+    // Liste som lagrer data om brukere når de er lastet fra json
+    private List<User> users;
+
+    public Authenticate(String dataFilePath) {
+        users = dataKonvertering.hentFraJson("brukere", User.class, dataFilePath);
     }
 
     // Få listen over brukere
-    public List<Object> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
     // Legge til bruker
     public void addUser(User user) {
-        dataKonvertering.leggTilJson(user,"A", User.class, "C");
+        // Hash passordet før lagring
+        String hashedPassword = BCrypt.hashpw(user.getPassord(), BCrypt.gensalt());
+        user.setPassord(hashedPassword);
+
+        // Legg til brukeren i listen
+        users.add(user);
+
+        // Lagre oppdatert liste til JSON-filen
+        dataKonvertering.objektTilJson(users, "brukere", "Data.json");
     }
     // Metode for å validere innlogging. Returnerer true om brukernavn og passord matcher
     public boolean validateLogin(String username, String password) {
-        for (Object user : users) {
-            User userObjekt = (User) user;
-            if (userObjekt.getBrukernavn().equals(username) && userObjekt.getPassord().equals(password)) {
+        for (User userObjekt : users) {
+            if (userObjekt.getBrukernavn().equals(username) && BCrypt.checkpw(password, userObjekt.getPassord())) {
                 return true;
             }
         }
@@ -38,10 +44,7 @@ public class Authenticate {
     }
     // Metode for endring av brukernavn og passord
     public boolean updateCredentials(int brukerID, String currentPassword, String newUsername, String newPassword) {
-        List<Object> users = dataKonvertering.hentFraJson("A", User.class, "B");
-
-        for (Object user : users) {
-            User userObjekt = (User) user;
+        for (User userObjekt : users) {
             if (userObjekt.getBrukerID() == brukerID && BCrypt.checkpw(currentPassword, userObjekt.getPassord())) {
 
                 userObjekt.setBrukernavn(newUsername);
@@ -49,7 +52,8 @@ public class Authenticate {
                 String hashedNewPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
                 userObjekt.setPassord(hashedNewPassword);
 
-                dataKonvertering.leggTilJson(userObjekt, "A", User.class, "B");
+                // Lagre oppdatert liste til JSON-filen
+                dataKonvertering.objektTilJson(users, "brukere", "Data.json");
 
                 return true;
             }

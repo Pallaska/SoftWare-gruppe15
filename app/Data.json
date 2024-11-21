@@ -1,0 +1,14 @@
+{
+  "brukere": [
+    {
+      "brukerID": 400,
+      "brukernavn": "HansNy",
+      "passord": "$2a$10$GapOgtq2Uu4Lnm2JZlHsXO0mSGV/LW0IBAYBWnaw3lbcYThwbWjAC",
+      "fodselsdato": "15102000",
+      "rettigheter": "12345",
+      "email": "testmail@live.no",
+      "adresse": "basestien 22",
+      "telefon": 34724923
+    }
+  ]
+}

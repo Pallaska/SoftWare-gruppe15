@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // For innlogging
-        authenticate = new Authenticate(this);
+        authenticate = new Authenticate("Data.json");
 
         // Tekstfelt og innloggingsknapp. ID-er skal være like som i xml-filen
         EditText usernameField = findViewById(R.id.username);
