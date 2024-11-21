@@ -148,6 +148,6 @@ public class AuthenticateDataTest {
         boolean updateFailed = authenticate.updateCredentials(400, "feilPassord", "HansFeil", "feilPassord");
         assertFalse("Oppdatering av legitimasjon bør mislykkes med feil passord", updateFailed);
     }
-    
+
  */
 }

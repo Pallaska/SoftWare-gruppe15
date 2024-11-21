@@ -23,7 +23,7 @@ public class Authenticate {
 
     // Legge til bruker
     public void addUser(User user) {
-        // Hash passordet før lagring
+        // Hasher passordet før lagring
         String hashedPassword = BCrypt.hashpw(user.getPassord(), BCrypt.gensalt());
         user.setPassord(hashedPassword);
 
@@ -35,6 +35,9 @@ public class Authenticate {
     }
     // Metode for å validere innlogging. Returnerer true om brukernavn og passord matcher
     public boolean validateLogin(String username, String password) {
+        if (username == null || password == null || username.isEmpty() || password.isEmpty()) {
+            return false;
+        }
         for (User userObjekt : users) {
             if (userObjekt.getBrukernavn().equals(username) && BCrypt.checkpw(password, userObjekt.getPassord())) {
                 return true;
