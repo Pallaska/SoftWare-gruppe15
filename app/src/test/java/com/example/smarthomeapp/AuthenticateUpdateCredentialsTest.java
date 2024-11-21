@@ -48,7 +48,7 @@ public class AuthenticateUpdateCredentialsTest {
         }
     }
 
-    // Test av vellykket oppdatering av brukernavn og passord
+    // ID 77 Test av vellykket oppdatering av brukernavn og passord
     @Test
     public void testSuccessfulUpdate() {
         boolean result = authenticate.updateCredentials(400, "passord123", "HansNytt", "nyttPassord123");
@@ -68,14 +68,14 @@ public class AuthenticateUpdateCredentialsTest {
         assertTrue("Passordet skal være oppdatert", BCrypt.checkpw("nyttPassord123", updatedUser.getPassord()));
     }
 
-    // Test for feil nåværende passord
+    // ID 77 Test for feil nåværende passord
     @Test
     public void testUpdateWithWrongCurrentPassword() {
         boolean result = authenticate.updateCredentials(400, "feilPassord", "HansNytt", "nyttPassord123");
         assertFalse("Oppdatering bør feile med feil nåværende passord", result);
     }
 
-    // Test for brukernavn som allerede eksisterer
+    // ID 77 Test for brukernavn som allerede eksisterer
     @Test
     public void testUpdateWithExistingUsername() {
         // Forsøker å endre Hans sitt brukernavn til Anna, som allerede eksisterer
@@ -83,14 +83,14 @@ public class AuthenticateUpdateCredentialsTest {
         assertFalse("Oppdatering bør feile når det nye brukernavnet allerede er tatt", result);
     }
 
-    // Test for tomt brukernavn og passord
+    // ID 77 Test for tomt brukernavn og passord
     @Test
     public void testUpdateWithEmptyUsernameAndPassword() {
         boolean result = authenticate.updateCredentials(400, "passord123", "", "");
         assertFalse("Oppdatering bør feile med tomt brukernavn og passord", result);
     }
 
-    // Test for null oppgitt
+    // ID 77 Test for null oppgitt
     @Test
     public void testUpdateWithNullValues() {
         boolean result = authenticate.updateCredentials(400, "passord123", null, null);

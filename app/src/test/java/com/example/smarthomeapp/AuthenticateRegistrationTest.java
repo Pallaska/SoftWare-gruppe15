@@ -45,7 +45,7 @@ public class AuthenticateRegistrationTest {
         }
     }
 
-    // Test for korrekt registrering av bruker
+    // ID 66 Test for korrekt registrering av bruker
     @Test
     public void testSuccessfulRegistration() {
         User newUser = new User(401, "Anna", "securePass123", "01011990", "12345",
@@ -58,7 +58,7 @@ public class AuthenticateRegistrationTest {
                 .anyMatch(user -> user.getBrukernavn().equals("Anna")));
     }
 
-    // Test for registrering med ugyldig e-post
+    // ID 66 Test for registrering med ugyldig e-post
     @Test
     public void testRegistrationWithInvalidEmail() {
         User newUser = new User(402, "Bob", "securePass123", "02021990", "12345",
@@ -67,7 +67,7 @@ public class AuthenticateRegistrationTest {
         assertFalse("Registrering bør feile med ugyldig e-post", result);
     }
 
-    // Test med for svakt passord (for kort)
+    // ID 66 Test med for svakt passord (for kort)
     @Test
     public void testRegistrationWithShortPassword() {
         User newUser = new User(403, "Charlie", "123", "03031990", "12345",
@@ -76,7 +76,7 @@ public class AuthenticateRegistrationTest {
         assertFalse("Registrering bør feile med for kort passord", result);
     }
 
-    // Test med for langt passord
+    // ID 66 Test med for langt passord
     @Test
     public void testRegistrationWithLongPassword() {
         User newUser = new User(404, "Dave", "DettePassordetErAltForLangtTilÅGodtas12345", "04041990", "12345",
@@ -85,7 +85,7 @@ public class AuthenticateRegistrationTest {
         assertFalse("Registrering bør feile med for langt passord", result);
     }
 
-    // Test med for langt brukernavn
+    // ID 66 Test med for langt brukernavn
     @Test
     public void testRegistrationWithLongUsername() {
         User newUser = new User(405, "VeldigLangtBrukernavnSomOverskriderGrensen", "securePass123", "05051990", "12345",
@@ -94,7 +94,7 @@ public class AuthenticateRegistrationTest {
         assertFalse("Registrering bør feile med for langt brukernavn", result);
     }
 
-    // Test for registrering av eksisterende brukernavn
+    // ID 66 Test for registrering av eksisterende brukernavn
     @Test
     public void testRegistrationWithExistingUsername() {
         User newUser = new User(406, "Hans", "anotherPass123", "06061990", "12345",
@@ -103,7 +103,7 @@ public class AuthenticateRegistrationTest {
         assertFalse("Registrering bør feile når brukernavnet allerede eksisterer", result);
     }
 
-    // Test for tomt brukernavn og passord
+    // ID 66 Test for tomt brukernavn og passord
     @Test
     public void testRegistrationWithEmptyUsernameAndPassword() {
         User newUser = new User(407, "", "", "07071990", "12345",

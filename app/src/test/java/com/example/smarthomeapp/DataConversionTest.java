@@ -31,7 +31,7 @@ public class DataConversionTest {
         }
     }
 
-    // Test for om brukere kan leses fra JSON-filen
+    // ID 101 Test for om brukere kan leses fra JSON-filen
     @Test
     public void testReadUsersFromJsonFile() throws IOException {
         String jsonContent = "{ \"brukere\": [ " +
@@ -51,7 +51,7 @@ public class DataConversionTest {
         assertEquals("Brukernavnet skal være 'TestUser'", "TestUser", user.getBrukernavn());
     }
 
-    // Test for håndtering av feil format i JSON-filen
+    // ID 101 Test for håndtering av feil format i JSON-filen
     @Test
     public void testHandleIncorrectJsonFormat() throws IOException {
         String invalidJsonContent = "{ \"brukere\": [ { \"brukerID\": 1, "; // Ufullstendig JSON
@@ -64,7 +64,7 @@ public class DataConversionTest {
         assertTrue("Brukerlisten skal være tom ved feil format", users.isEmpty());
     }
 
-    // Test for at brukere kan legges til i JSON-filen
+    // ID 101 Test for at brukere kan legges til i JSON-filen
     @Test
     public void testAddUserToJsonFile() throws IOException {
         String jsonContent = "{ \"brukere\": [] }";
