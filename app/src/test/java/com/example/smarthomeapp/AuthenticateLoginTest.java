@@ -44,28 +44,28 @@ public class AuthenticateLoginTest {
         }
     }
 
-    // Test som sjekker respons for korrekt brukernavn og passord
+    // ID 76 Test som sjekker respons for korrekt brukernavn og passord
     @Test
     public void testLoginWithCorrectCredentials() {
         boolean result = authenticate.validateLogin("Hans", "passord123");
         assertTrue("Innlogging bør være gyldig med riktig brukernavn og passord", result);
     }
 
-    // Test som sjekker respons for korrekt brukernavn, men feil passord
+    // ID 76 Test som sjekker respons for korrekt brukernavn, men feil passord
     @Test
     public void testLoginWithCorrectUsernameWrongPassword() {
         boolean result = authenticate.validateLogin("Hans", "feilPassord");
         assertFalse("Innlogging bør være ugyldig med riktig brukernavn men feil passord", result);
     }
 
-    // Test som sjekker respons for feil brukernavn, men korrekt passord
+    // ID 76 Test som sjekker respons for feil brukernavn, men korrekt passord
     @Test
     public void testLoginWithWrongUsernameCorrectPassword() {
         boolean result = authenticate.validateLogin("FeilBrukernavn", "passord123");
         assertFalse("Innlogging bør være ugyldig med feil brukernavn men riktig passord", result);
     }
 
-    // Test som sjekker etter null-verdi i brukernavn og passord
+    // ID 76 Test som sjekker etter null-verdi i brukernavn og passord
     @Test
     public void testLoginWithNullValues() {
         boolean result = authenticate.validateLogin(null, null);
@@ -78,7 +78,7 @@ public class AuthenticateLoginTest {
         assertFalse("Innlogging bør være ugyldig når brukernavn er null", result);
     }
 
-    // Test som sjekker etter tomme strenger i brukernavn og passord
+    // ID 76 Test som sjekker etter tomme strenger i brukernavn og passord
     @Test
     public void testLoginWithEmptyStrings() {
         boolean result = authenticate.validateLogin("", "");
@@ -91,7 +91,7 @@ public class AuthenticateLoginTest {
         assertFalse("Innlogging bør være ugyldig når brukernavn er en tom streng", result);
     }
 
-    // Test som sjekker case-sensitivitet i passord
+    // ID 76 Test som sjekker case-sensitivitet i passord
     @Test
     public void testPasswordCaseSensitivity() {
         // Passord med feil case
@@ -102,7 +102,7 @@ public class AuthenticateLoginTest {
         assertFalse("Innlogging bør være ugyldig når passordet har feil case", result);
     }
 
-    // Test som sjekker case-sensitivitet i brukernavn
+    // ID 76 Test som sjekker case-sensitivitet i brukernavn
     @Test
     public void testUsernameCaseSensitivity() {
         // Brukernavn med feil case

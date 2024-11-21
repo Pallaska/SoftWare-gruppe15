@@ -46,7 +46,7 @@ public class AuthenticateDataTest {
         }
     }
 
-    // Tester om antall brukere som lastes inn stemmer
+    // ID 95 Tester om antall brukere som lastes inn stemmer
     @Test
     public void testLoadUsersFromJson() {
         int expectedUserCount = 1; // Satt til 1, ettersom test-databasen kun har det
@@ -55,7 +55,7 @@ public class AuthenticateDataTest {
     }
 
 
-    // Tester om en bruker eksisterer, og om brukerdataen er korrekt
+    // ID 95 Tester om en bruker eksisterer, og om brukerdataen er korrekt
     @Test
     public void testUserDataIntegrity() {
         List<User> users = authenticate.getUsers();
@@ -80,7 +80,7 @@ public class AuthenticateDataTest {
 
 
 
-    // Tester håndtering når filen ikke finnes
+    // ID 95 Tester håndtering når filen ikke finnes
     @Test
     public void testLoadUsersFromJson_FileNotFound() {
         // Initialiserer Authenticate med en ikke-eksisterende fil
@@ -90,7 +90,7 @@ public class AuthenticateDataTest {
         assertTrue("Brukerlisten skal være tom når filen ikke finnes", users.isEmpty());
     }
 
-    // Tester håndtering av korrupt JSON fil
+    // ID 95 Tester håndtering av korrupt JSON fil
     @Test
     public void testLoadUsersFromJson_CorruptedJson() throws Exception {
         // Oppretter en midlertidig fil med korrupt JSON
