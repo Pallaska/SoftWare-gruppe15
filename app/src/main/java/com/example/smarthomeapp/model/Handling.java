@@ -24,7 +24,7 @@ public class Handling {
 
     @Override
     public String toString() {
-        return "Handling{" + "brukerID=" + brukerID + ", logg='" + logg + '\'' + ", tid=" + tid + '}';
+        return "handlinger{" + "brukerID=" + brukerID + ", logg='" + logg + '\'' + ", tid=" + tid + '}';
     }
 }
 

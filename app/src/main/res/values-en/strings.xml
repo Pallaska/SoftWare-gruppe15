@@ -1,0 +1,89 @@
+<resources>
+    <string name="app_name">SmartHomeApp</string>
+
+    <string name="login_msg1">You\'re logged out.</string>
+    <string name="login_msg2">Incorrect username or password</string>
+    <string name="login_msg3">Successful login</string>
+
+    <string name="login_cred1">Username</string>
+    <string name="login_cred2">Password</string>
+
+    <string name="login_button">Log in</string>
+
+    <string name="register_msg1">Register new user</string>
+    <string name="register_msg2">Already have an account?</string>
+    <string name="register_msg3">Registration successful!</string>
+    <string name="register_msg4">Username is taken, choose another</string>
+    <string name="register_msg5">Too many users are registered!</string>
+    <string name="register_msg6">You have to fill all fields</string>
+
+    <string name="register_credentials1">Username</string>
+    <string name="register_credentials2">Password</string>
+    <string name="register_credentials3">Date of birth (dd/mm/yyyy)</string>
+    <string name="register_credentials4">Rights</string>
+    <string name="register_credentials5">E-mail</string>
+    <string name="register_credentials6">Address</string>
+    <string name="register_credentials7">Phone</string>
+    <string name="register_credentials8">Register</string>
+
+    <string name="home_title">Your favorites</string>
+
+    <string name="home_category1">Lighting</string>
+    <string name="home_category2">Smart TV</string>
+    <string name="home_category3">Washing Machine</string>
+
+    <string name="home_place1">Bedroom</string>
+    <string name="home_place2">Bathroom</string>
+    <string name="home_place3">Entrance</string>
+    <string name="home_place4">Garden</string>
+
+    <string name="home_function1">Access</string>
+    <string name="home_function2">Front door</string>
+    <string name="home_function3">Back door</string>
+    <string name="home_function4">Garage</string>
+    <string name="home_function5">Safe</string>
+
+    <string name="home_command">Command sent to device</string>
+
+    <string name="home_open">Open</string>
+    <string name="home_closed">Closed</string>
+    <string name="home_msg1">No devices can be used for this action</string>
+    <string name="home_msg2">There are no devices</string>
+
+    <string name="home_button">Manage devices</string>
+
+    <string name="administrer_button">Edit</string>
+
+    <string name="administrer_title">Your devices</string>
+
+    <string name="scan_button">Search for device</string>
+    <string name="scan_msg1">No Bluetooth devices found</string>
+    <string name="scan_msg2">No WiFi devices found</string>
+
+    <string name="settings_msg1">Image is saved!</string>
+    <string name="settings_msg2">New password is saved</string>
+    <string name="settings_msg3">You have to fill both fields</string>
+    <string name="settings_msg4">Cancel</string>
+
+    <string name="settings_1">Settings</string>
+    <string name="settings_2">Change profile picture</string>
+    <string name="settings_3">Change login</string>
+    <string name="settings_4">Access control</string>
+    <string name="settings_5">Security</string>
+    <string name="settings_6">Block access</string>
+    <string name="settings_7">Lock all doors</string>
+    <string name="settings_8">Turn off everything</string>
+    <string name="settings_9">Advanced</string>
+    <string name="settings_10">Automation</string>
+    <string name="settings_11">Notifications</string>
+    <string name="settings_12">Appearance</string>
+    <string name="settings_13">Language</string>
+    <string name="settings_14">All</string>
+    <string name="settings_15">Light</string>
+    <string name="settings_16">Security</string>
+
+    <string name="access_control_title">Access Control</string>
+    <string name="access_control_button1">Administer access</string>
+    <string name="access_control_button2">Show access code</string>
+    <string name="access_control_button3">Remove all access</string>
+</resources>

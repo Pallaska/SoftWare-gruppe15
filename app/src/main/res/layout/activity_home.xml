@@ -22,7 +22,6 @@
             android:id="@+id/headerTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dine favoritter"
             android:textSize="20sp"
             android:fontFamily="@font/poppins_bold"
             android:textColor="#000000"
@@ -55,27 +54,27 @@
 
         <!-- Enhet 1 -->
         <ImageView
+                android:id="@+id/category1"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:src="@drawable/ic_bulb"
-                android:layout_margin="2dp"
-                android:contentDescription="Belysning"/>
+                android:layout_margin="2dp"/>
 
         <!-- Enhet 2 -->
         <ImageView
+                android:id="@+id/category2"
                 android:layout_width="130dp"
                 android:layout_height="128dp"
                 android:src="@drawable/ic_tv"
-                android:layout_margin="2dp"
-                android:contentDescription="Smart TV"/>
+                android:layout_margin="2dp"/>
 
         <!-- Enhet 3 -->
         <ImageView
+                android:id="@+id/category3"
                 android:layout_width="124dp"
                 android:layout_height="125dp"
                 android:src="@drawable/ic_washing_machine"
-                android:layout_margin="2dp"
-                android:contentDescription="Vaskemaskin"/>
+                android:layout_margin="2dp"/>
     </LinearLayout>
 
     <!-- Knapper for adgangs enheter-->
@@ -98,18 +97,18 @@
                 android:padding="3dp">
 
             <TextView
+                    android:id="@+id/entranceDoorTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Inngangsdør"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"
                     android:layout_weight="1"
                     android:textColor="#000000" />
 
             <Button
+                    android:id="@+id/entranceDoorButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Åpne"
                     android:backgroundTint="#B3E7FD"
                     android:textColor="#000000" />
         </LinearLayout>
@@ -122,18 +121,18 @@
                 android:padding="3dp">
 
             <TextView
+                    android:id="@+id/backDoorTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Bakdør"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"
                     android:layout_weight="1"
                     android:textColor="#000000" />
 
             <Button
+                    android:id="@+id/backDoorButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Åpne"
                     android:backgroundTint="#B3E7FD"
                     android:textColor="#000000" />
         </LinearLayout>
@@ -146,43 +145,42 @@
                 android:padding="3dp">
 
             <TextView
+                    android:id="@+id/garageTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Garasje"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"
                     android:layout_weight="1"
                     android:textColor="#000000" />
 
             <Button
+                    android:id="@+id/garageButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Åpne"
                     android:backgroundTint="#B3E7FD"
                     android:textColor="#000000" />
         </LinearLayout>
 
         <!-- Adgang 4 -->
         <LinearLayout
-                android:id="@+id/safeButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="3dp">
 
             <TextView
+                    android:id="@+id/safeTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Safe"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"
                     android:layout_weight="1"
                     android:textColor="#000000" />
 
             <Button
+                    android:id="@+id/safeButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Åpne"
                     android:backgroundTint="#B3E7FD"
                     android:textColor="#000000" />
         </LinearLayout>
@@ -204,7 +202,6 @@
             android:id="@+id/manageDevicesButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Administrer enheter"
             android:backgroundTint="#B3E7FD"
             android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -217,7 +214,6 @@
             android:id="@+id/lightingTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Belysning"
             android:textSize="18sp"
             android:fontFamily="@font/poppins_bold"
             android:textColor="#000000"
@@ -242,7 +238,6 @@
             android:id="@+id/accessTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Adgang"
             android:textSize="18sp"
             android:fontFamily="@font/poppins_bold"
             android:textColor="#000000"
@@ -282,9 +277,9 @@
                 android:padding="3dp">
 
             <TextView
+                    android:id="@+id/bedroomTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Soverom"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"
                     android:layout_weight="1"
@@ -308,6 +303,7 @@
                 android:padding="3dp">
 
             <TextView
+                    android:id="@+id/bathroomTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Bad"
@@ -333,9 +329,9 @@
                 android:padding="3dp">
 
             <TextView
+                    android:id="@+id/entranceTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Inngang"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"
                     android:layout_weight="1"
@@ -358,9 +354,9 @@
                 android:padding="3dp">
 
             <TextView
+                    android:id="@+id/gardenTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Hage"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"
                     android:layout_weight="1"

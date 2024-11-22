@@ -1,22 +1,52 @@
 package com.example.smarthomeapp.json;
+import android.content.Context;
 import com.example.smarthomeapp.model.User;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
+import com.google.gson.*;
 import org.mindrot.jbcrypt.BCrypt;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class DataKonvertering {
     public static Gson G = new GsonBuilder().setPrettyPrinting().create();
+    private Context context;
+    public DataKonvertering(Context context) {
+        this.context = context;
+    }
+
+    public void enkelJsonStruktur(String filnavn) {
+        File file = new File(context.getFilesDir(), filnavn);
+
+        if (!file.exists()) {
+            try {
+                FileOutputStream fos = context.openFileOutput(filnavn, Context.MODE_PRIVATE);
+
+                String jsonStruktur = "";
+
+                if (Objects.equals(filnavn, "Data.json")) {
+                    jsonStruktur = "{\n" +
+                            "  \"brukere\": [],\n" +
+                            "  \"WiFi enheter\": [],\n" +
+                            "  \"Bluetooth enheter\": [],\n" +
+                            "  \"instillinger\": []\n" +
+                            "}";
+                }
+                if (Objects.equals(filnavn, "Logg.json")) {
+                    jsonStruktur = "{\n" +
+                            "  \"handlinger\": []\n" +
+                            "}";
+                }
+                fos.write(jsonStruktur.getBytes());
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     // Metode som leser objekter fra JSON og returnerer en liste med hentede objekter
     public <T> List<Object> hentFraJson(String kategori, Class<T> klasseNavn, String filnavn) {
         List<Object> hentetListe = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(filnavn))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(new File(context.getFilesDir(), filnavn)))) {
             StringBuilder jsonStringBuilder = new StringBuilder();
             String linje;
             while ((linje = br.readLine()) != null) {
@@ -31,9 +61,11 @@ public class DataKonvertering {
 
             // Konverterer hvert element i bruker array-en til et objekt
             // dvs. strukturen som er definert i objektens klasse
-            for (int i = 0; i < jsonArray.size(); i++) {
-                Object hentet = G.fromJson(jsonArray.get(i), klasseNavn);
-                hentetListe.add(hentet);
+            if (jsonArray != null && !jsonArray.isEmpty()) {
+                for (int i = 0; i < jsonArray.size(); i++) {
+                    Object hentet = G.fromJson(jsonArray.get(i), klasseNavn);
+                    hentetListe.add(hentet);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -45,7 +77,7 @@ public class DataKonvertering {
     public <T> void leggTilJson(Object ny, String kategori, Class<T> klasseNavn, String filnavn) {
         List<Object> hentetListe = hentFraJson(kategori, klasseNavn, filnavn);
 
-        if (Objects.equals(kategori, "bruker")) {
+        if (Objects.equals(kategori, "brukere")) {
             // Hash passordet
             User nyBruker = (User)ny;
             String hashedPassword = BCrypt.hashpw(nyBruker.getPassord(), BCrypt.gensalt());
@@ -71,7 +103,7 @@ public class DataKonvertering {
             JsonObject jsonObject = new JsonObject();
             jsonObject.add(kategori, oppdatertJsonArray);
 
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filnavn))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(new File(context.getFilesDir(), filnavn)))) {
                 G.toJson(jsonObject, writer);
             }
         } catch (IOException e) {

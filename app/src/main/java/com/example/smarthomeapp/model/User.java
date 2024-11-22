@@ -20,6 +20,8 @@ public class User {
     private String adresse;
     @SerializedName("telefon")
     private int telefon;
+    @SerializedName("bilde")
+    private String bilde;
 
     public User(int brukerID, String brukernavn, String passord, String fodselsdato, String rettigheter, String email, String adresse, int telefon) {
         this.brukerID = brukerID;
@@ -56,6 +58,7 @@ public class User {
     public int getTelefon() {
         return telefon;
     }
+    public String getBilde() { return bilde; }
 
     public void setBrukerID(int brukerID) {
         this.brukerID = brukerID;
@@ -82,9 +85,11 @@ public class User {
         this.telefon = telefon;
     }
 
+    public void setBilde(String bilde) { this.bilde = bilde; }
+
     @Override
     public String toString() {
-        return "Bruker{" +
+        return "bruker{" +
                 "brukerID=" + brukerID +
                 ", brukernavn='" + brukernavn + '\'' +
                 ", passord='" + passord + '\'' +

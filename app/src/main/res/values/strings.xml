@@ -1,3 +1,89 @@
 <resources>
     <string name="app_name">SmartHomeApp</string>
+
+    <string name="login_msg1">Du er logget ut.</string>
+    <string name="login_msg2">Feil brukernavn eller passord</string>
+    <string name="login_msg3">Vellykket innlogging</string>
+
+    <string name="login_cred1">Brukernavn</string>
+    <string name="login_cred2">Passord</string>
+
+    <string name="login_button">Logg på</string>
+
+    <string name="register_msg1">Registrer ny bruker</string>
+    <string name="register_msg2">Har du allerede en bruker?</string>
+    <string name="register_msg3">Registrering vellykket!</string>
+    <string name="register_msg4">Brukernavnet er tatt, velg et annet</string>
+    <string name="register_msg5">Det er for mange brukere registrert!</string>
+    <string name="register_msg6">Du må fylle alle felt</string>
+
+    <string name="register_credentials1">Brukernavn</string>
+    <string name="register_credentials2">Passord</string>
+    <string name="register_credentials3">Fødselsdato (dd/mm/åååå)</string>
+    <string name="register_credentials4">Rettigheter</string>
+    <string name="register_credentials5">E-mail</string>
+    <string name="register_credentials6">Adresse</string>
+    <string name="register_credentials7">Telefon</string>
+    <string name="register_credentials8">Registrer</string>
+
+    <string name="home_title">Dine favoritter</string>
+
+    <string name="home_category1">Belysning</string>
+    <string name="home_category2">Smart TV</string>
+    <string name="home_category3">Vaskemaskin</string>
+
+    <string name="home_place1">Soverom</string>
+    <string name="home_place2">Bad</string>
+    <string name="home_place3">Inngang</string>
+    <string name="home_place4">Hage</string>
+
+    <string name="home_function1">Adgang</string>
+    <string name="home_function2">Inngangsdør</string>
+    <string name="home_function3">Bakdør</string>
+    <string name="home_function4">Garasje</string>
+    <string name="home_function5">Safe</string>
+
+    <string name="home_command">Kommando sendt til enhet</string>
+
+    <string name="home_open">Åpen</string>
+    <string name="home_closed">Lukket</string>
+    <string name="home_msg1">Ingen enheter kan brukes for denne handlingen</string>
+    <string name="home_msg2">Det finnes ingen enheter</string>
+
+    <string name="home_button">Administrer enheter</string>
+
+    <string name="administrer_button">Endre</string>
+
+    <string name="administrer_title">Dine enheter</string>
+
+    <string name="scan_button">Søk etter enhet</string>
+    <string name="scan_msg1">Ingen Bluetooth enheter funnet</string>
+    <string name="scan_msg2">Ingen WiFi enheter funnet</string>
+
+    <string name="settings_msg1">Bildet er lagret!</string>
+    <string name="settings_msg2">Nytt passord er lagret</string>
+    <string name="settings_msg3">Du må fylle alle felt</string>
+    <string name="settings_msg4">Avbryt</string>
+
+    <string name="settings_1">Innstillinger</string>
+    <string name="settings_2">Endre profilbilde</string>
+    <string name="settings_3">Endre logg inn</string>
+    <string name="settings_4">Tilgangskontroll</string>
+    <string name="settings_5">Sikkerhet</string>
+    <string name="settings_6">Blokker tilgang</string>
+    <string name="settings_7">Lås alle dører</string>
+    <string name="settings_8">Skru av alt</string>
+    <string name="settings_9">Avansert</string>
+    <string name="settings_10">Automatisering</string>
+    <string name="settings_11">Varsler</string>
+    <string name="settings_12">Utseende</string>
+    <string name="settings_13">Språk</string>
+    <string name="settings_14">Alt</string>
+    <string name="settings_15">Lyst</string>
+    <string name="settings_16">Sikkerhet</string>
+
+    <string name="access_control_title">Tilgangskontroll</string>
+    <string name="access_control_button1">Administrer tilgang</string>
+    <string name="access_control_button2">Vis tilgangskode</string>
+    <string name="access_control_button3">Fjern all tilgang</string>
 </resources>

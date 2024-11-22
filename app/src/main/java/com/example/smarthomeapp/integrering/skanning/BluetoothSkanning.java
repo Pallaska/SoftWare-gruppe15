@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.core.app.ActivityCompat;
-import com.example.smarthomeapp.R;
 import java.util.List;
 
 public class BluetoothSkanning extends AppCompatActivity {
@@ -22,7 +21,6 @@ public class BluetoothSkanning extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bluetooth_skann);
 
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 

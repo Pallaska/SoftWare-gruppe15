@@ -11,18 +11,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.core.app.ActivityCompat;
-import com.example.smarthomeapp.R;
 import java.util.List;
 
 public class WiFiSkanning extends AppCompatActivity {
-
     private WifiManager wifiManager;
     private List<ScanResult> resultater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wifi_skann);
 
         wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
 

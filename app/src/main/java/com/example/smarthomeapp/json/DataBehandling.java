@@ -1,16 +1,19 @@
 package com.example.smarthomeapp.json;
+import android.content.Context;
 import com.example.smarthomeapp.model.BluetoothEnhet;
+import com.example.smarthomeapp.model.Instillinger;
 import com.example.smarthomeapp.model.WiFiEnhet;
 import com.example.smarthomeapp.model.User;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class DataBehandling {
-    DataKonvertering dataKonvertering = new DataKonvertering();
-    Gson G = new GsonBuilder().setPrettyPrinting().create();
+    private DataKonvertering dataKonvertering;
+
+    public DataBehandling(Context context) {
+        dataKonvertering = new DataKonvertering(context);
+    }
 
     // Metode som returnerer en liste med enheter basert på område eller funksjon
     public List<WiFiEnhet> hentWiFiEnhetGruppe(WiFiEnhet enhet, String gruppe) {
@@ -43,11 +46,11 @@ public class DataBehandling {
         }
         return java.util.Collections.emptyList();
     }
-    
-    // Metode for å endre enhet/bruker verdier i JSON
-    public <T> void endreJson(Object endreObjekt, String kategori, Class<T> klasseNavn, String endreHva, String endreTil, String filnavn) {
-        List<Object> hentetListe = dataKonvertering.hentFraJson(kategori, klasseNavn, filnavn);
 
+
+    // Metode for å endre enhet/bruker verdier i JSON
+    public <T> void endreJson(String kategori, Class<T> klasseNavn, String endreHva, String endreTil, String filnavn) {
+        List<Object> hentetListe = dataKonvertering.hentFraJson(kategori, klasseNavn, filnavn);
         // Endrer informasjon i JSON
         if (Objects.equals(kategori, "brukere")) {
             for (Object bruker : hentetListe) {
@@ -75,21 +78,18 @@ public class DataBehandling {
             }
         } else if (Objects.equals(kategori, "WiFi enheter")) {
             for (Object enhet : hentetListe) {
-
-                // Metodene getWiFiEnhetFunksjon og getWiFiEnhetSted er i en annen branch
-                // Metodene setWiFiEnhetFunksjon og setWiFiEnhetSted må lages i en annen branch
                 WiFiEnhet endreWiFiEnhet = (WiFiEnhet) enhet;
                 if (Objects.equals(endreWiFiEnhet.getEnhetNavn(), endreHva)) {
                     endreWiFiEnhet.setEnhetNavn(endreTil);
                 } else if (Objects.equals(endreWiFiEnhet.getEnhetSted(), endreHva)) {
                     endreWiFiEnhet.setEnhetProtokoll(endreTil);
-                } else if (Objects.equals(endreWiFiEnhet.getEnhetSted(), endreHva)) {
-                    endreWiFiEnhet.setEnhetIp(endreTil);
-                } else if (Objects.equals(endreWiFiEnhet.getEnhetSted(), endreHva)) {
-                    endreWiFiEnhet.setEnhetPort(endreTil);
                 } else if (Objects.equals(endreWiFiEnhet.getEnhetFunksjon(), endreHva)) {
+                    endreWiFiEnhet.setEnhetIp(endreTil);
+                } else if (Objects.equals(endreWiFiEnhet.getEnhetIp(), endreHva)) {
+                    endreWiFiEnhet.setEnhetPort(endreTil);
+                } else if (Objects.equals(endreWiFiEnhet.getEnhetPort(), endreHva)) {
                     endreWiFiEnhet.setEnhetFunksjon(endreTil);
-                } else if (Objects.equals(endreWiFiEnhet.getEnhetSted(), endreHva)) {
+                } else if (Objects.equals(endreWiFiEnhet.getEnhetProtokoll(), endreHva)) {
                     endreWiFiEnhet.setEnhetSted(endreTil);
                 } else {
                     System.out.println("Feil: " + endreHva + " finnes ikke i WiFi enheter kategorien");
@@ -97,19 +97,35 @@ public class DataBehandling {
             }
         } else if (Objects.equals(kategori, "Bluetooth enheter")) {
             for (Object enhet : hentetListe) {
-
                 BluetoothEnhet endreBluetoothEnhet = (BluetoothEnhet) enhet;
                 if (Objects.equals(endreBluetoothEnhet.getEnhetNavn(), endreHva)) {
                     endreBluetoothEnhet.setEnhetNavn(endreTil);
+                } else if (Objects.equals(endreBluetoothEnhet.getEnhetFunksjon(), endreHva)) {
+                    endreBluetoothEnhet.setEnhetFunksjon(endreTil);
+                } else if (Objects.equals(endreBluetoothEnhet.getEnhetSted(), endreHva)) {
+                    endreBluetoothEnhet.setEnhetSted(endreTil);
                 } else {
                     System.out.println("Feil: " + endreHva + " finnes ikke i WiFi enheter kategorien");
+                }
+            }
+        } else if (Objects.equals(kategori, "instillinger")) {
+            for (Object instillingObjekt : hentetListe) {
+                Instillinger instilling = (Instillinger) instillingObjekt;
+                if (Objects.equals(instilling.getStyle(), endreHva)) {
+                    instilling.setStyle(endreTil);
+                } else if (Objects.equals(instilling.getVarsler(), endreHva)) {
+                    instilling.setVarsler(endreTil);
+                } else if (Objects.equals(instilling.getLanguage(), endreHva)) {
+                    instilling.setLanguage(endreTil);
+                } else {
+                    System.out.println("Feil: " + endreHva + " finnes ikke i instillinger kategorien");
                 }
             }
         }
         // Konverterer objekt til json
         dataKonvertering.objektTilJson(hentetListe, kategori, "Data.json");
     }
-    
+
     // Metode for å slette fra et kategori i JSON
     public <T> void slettFraJson(Object objektForSletting, String kategori, Class<T> klasseNavn, String filnavn) {
         List<Object> hentetListe = dataKonvertering.hentFraJson(kategori, klasseNavn, filnavn);

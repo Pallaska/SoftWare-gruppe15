@@ -22,7 +22,7 @@
             android:id="@+id/headerTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Innstillinger"
+            android:text="@string/settings_1"
             android:textSize="20sp"
             android:fontFamily="@font/poppins_bold"
             android:textColor="#000000"
@@ -55,19 +55,22 @@
 
         <!-- Knapp for å endre profilbilde -->
         <ImageView
+                android:id="@+id/endreProfilbilde"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:src="@drawable/ic_profilbilde"
                 android:layout_margin="2dp"
-                android:contentDescription="Belysning"/>
+                android:contentDescription="@string/home_category1"/>
 
         <!-- Knapp for å endre brukernavn og passord -->
         <ImageView
+                android:id="@+id/endrePassord"
                 android:layout_width="130dp"
                 android:layout_height="128dp"
                 android:src="@drawable/ic_login"
                 android:layout_margin="2dp"
-                android:contentDescription="Smart TV"/>
+                android:clickable="true"
+                android:focusable="true" />
 
         <!-- Knapp for tilgangskontrollsiden -->
         <ImageView
@@ -76,7 +79,7 @@
                 android:layout_height="125dp"
                 android:src="@drawable/ic_tilgang"
                 android:layout_margin="2dp"
-                android:contentDescription="Tilgangskontroll"
+                android:contentDescription="@string/settings_4"
                 android:clickable="true"
                 android:focusable="true" />
     </LinearLayout>
@@ -103,7 +106,7 @@
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Automatisering"
+                    android:text="@string/settings_10"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"
                     android:layout_weight="1"
@@ -112,7 +115,7 @@
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Endre"
+                    android:text="@string/administrer_button"
                     android:backgroundTint="#B3E7FD"
                     android:textColor="#000000" />
         </LinearLayout>
@@ -127,7 +130,7 @@
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Varsler"
+                    android:text="@string/settings_11"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"
                     android:layout_weight="1"
@@ -150,7 +153,7 @@
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Utseende"
+                    android:text="@string/settings_12"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"
                     android:layout_weight="1"
@@ -175,16 +178,16 @@
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Språk"
+                    android:text="@string/settings_13"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"
                     android:layout_weight="1"
                     android:textColor="#000000" />
 
             <Button
+                    android:id="@+id/changeLanguageButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Norsk"
                     android:backgroundTint="#B3E7FD"
                     android:textColor="#000000" />
         </LinearLayout>
@@ -206,7 +209,7 @@
             android:id="@+id/manageDevicesButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Administrer enheter"
+            android:text="@string/home_button"
             android:backgroundTint="#B3E7FD"
             android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -219,7 +222,7 @@
             android:id="@+id/lightingTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sikkerhet"
+            android:text="@string/settings_16"
             android:textSize="18sp"
             android:fontFamily="@font/poppins_bold"
             android:textColor="#000000"
@@ -275,7 +278,7 @@
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Blokker tilgang"
+                    android:text="@string/settings_6"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"
                     android:layout_weight="1"
@@ -301,7 +304,7 @@
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Lås alle dører"
+                    android:text="@string/settings_7"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"
                     android:layout_weight="1"
@@ -326,7 +329,7 @@
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Skru av alt"
+                    android:text="@string/settings_8"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"
                     android:layout_weight="1"

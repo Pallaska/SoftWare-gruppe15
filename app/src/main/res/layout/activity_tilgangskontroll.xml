@@ -21,7 +21,7 @@
             android:id="@+id/headerTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tilgangskontroll"
+            android:text="@string/access_control_title"
             android:textSize="20sp"
             android:fontFamily="@font/poppins_bold"
             android:textColor="#000000"
@@ -69,7 +69,7 @@
                 android:id="@+id/showAccessCodeButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vis tilgangskode"
+                android:text="@string/access_control_button2"
                 android:backgroundTint="#B3E7FD"
                 android:textColor="#000000"
                 android:layout_marginTop="10dp" />
@@ -91,7 +91,7 @@
             android:id="@+id/manageDevicesButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fjern all tilgang"
+            android:text="@string/access_control_button3"
             android:backgroundTint="#B3E7FD"
             android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -104,7 +104,7 @@
             android:id="@+id/lightingTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Administrer tilgang"
+            android:text="@string/access_control_button1"
             android:textSize="18sp"
             android:fontFamily="@font/poppins_bold"
             android:textColor="#000000"
@@ -126,27 +126,27 @@
 
         <!-- Person 1 -->
         <ImageView
+                android:id="@+id/person1"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:src="@drawable/ic_sander"
-                android:layout_margin="2dp"
-                android:contentDescription="Belysning" />
+                android:layout_margin="2dp"/>
 
         <!-- Person 2 -->
         <ImageView
+                android:id="@+id/person2"
                 android:layout_width="130dp"
                 android:layout_height="128dp"
                 android:src="@drawable/ic_turid"
-                android:layout_margin="2dp"
-                android:contentDescription="Smart TV" />
+                android:layout_margin="2dp"/>
 
         <!-- Person 3 -->
         <ImageView
+                android:id="@+id/person3"
                 android:layout_width="124dp"
                 android:layout_height="125dp"
                 android:src="@drawable/ic_ole"
-                android:layout_margin="2dp"
-                android:contentDescription="Vaskemaskin" />
+                android:layout_margin="2dp"/>
     </LinearLayout>
 
     <!-- Andre rad med bilder -->
@@ -162,27 +162,27 @@
 
         <!-- Person 4 -->
         <ImageView
+                android:id="@+id/person4"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:src="@drawable/ic_josefine"
-                android:layout_margin="2dp"
-                android:contentDescription="Belysning" />
+                android:layout_margin="2dp"/>
 
         <!-- Person 5 -->
         <ImageView
+                android:id="@+id/person5"
                 android:layout_width="130dp"
                 android:layout_height="128dp"
                 android:src="@drawable/ic_empty"
-                android:layout_margin="2dp"
-                android:contentDescription="Smart TV" />
+                android:layout_margin="2dp"/>
 
         <!-- Person 6-->
         <ImageView
+                android:id="@+id/person6"
                 android:layout_width="124dp"
                 android:layout_height="125dp"
                 android:src="@drawable/ic_empty"
-                android:layout_margin="2dp"
-                android:contentDescription="Vaskemaskin" />
+                android:layout_margin="2dp"/>
     </LinearLayout>
 
     <!-- Tredje rad med bilder -->
@@ -198,26 +198,26 @@
 
         <!-- Person 7 -->
         <ImageView
+                android:id="@+id/person7"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:src="@drawable/ic_empty"
-                android:layout_margin="2dp"
-                android:contentDescription="Belysning" />
+                android:layout_margin="2dp"/>
 
         <!-- Person 8 -->
         <ImageView
+                android:id="@+id/person8"
                 android:layout_width="130dp"
                 android:layout_height="128dp"
                 android:src="@drawable/ic_empty"
-                android:layout_margin="2dp"
-                android:contentDescription="Smart TV" />
+                android:layout_margin="2dp"/>
 
         <!-- Person 9 -->
         <ImageView
+                android:id="@+id/person9"
                 android:layout_width="124dp"
                 android:layout_height="125dp"
                 android:src="@drawable/ic_empty"
-                android:layout_margin="2dp"
-                android:contentDescription="Vaskemaskin" />
+                android:layout_margin="2dp"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
