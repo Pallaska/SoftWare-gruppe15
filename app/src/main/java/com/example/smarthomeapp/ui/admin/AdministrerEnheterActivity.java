@@ -1,10 +1,10 @@
-package com.example.smarthomeapp;
+package com.example.smarthomeapp.ui.admin;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.smarthomeapp.R;
 
 /**
  * AdministrerEnheterActivity håndterer siden for administrasjon av enheter.

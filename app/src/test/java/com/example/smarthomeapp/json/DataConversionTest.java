@@ -1,6 +1,5 @@
-package com.example.smarthomeapp;
+package com.example.smarthomeapp.json;
 
-import com.example.smarthomeapp.json.DataKonvertering;
 import com.example.smarthomeapp.model.User;
 import org.junit.After;
 import org.junit.Before;

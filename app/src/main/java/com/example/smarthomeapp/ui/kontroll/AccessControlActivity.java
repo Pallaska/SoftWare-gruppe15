@@ -1,4 +1,4 @@
-package com.example.smarthomeapp;
+package com.example.smarthomeapp.ui.kontroll;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.smarthomeapp.R;
 
 /**
  * AccessControlActivity håndterer funksjonalitet for tilgangskontrollsiden i appen.

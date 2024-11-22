@@ -1,4 +1,4 @@
-package com.example.smarthomeapp;
+package com.example.smarthomeapp.auth;
 
 import org.junit.After;
 import org.junit.Before;

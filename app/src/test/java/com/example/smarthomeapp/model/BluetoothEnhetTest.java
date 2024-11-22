@@ -1,6 +1,5 @@
-package com.example.smarthomeapp;
+package com.example.smarthomeapp.model;
 
-import com.example.smarthomeapp.model.BluetoothEnhet;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

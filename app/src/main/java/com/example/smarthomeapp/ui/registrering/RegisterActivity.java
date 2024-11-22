@@ -1,4 +1,4 @@
-package com.example.smarthomeapp;
+package com.example.smarthomeapp.ui.registrering;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.smarthomeapp.ui.start.MainActivity;
+import com.example.smarthomeapp.R;
 
 import java.util.Calendar;
 

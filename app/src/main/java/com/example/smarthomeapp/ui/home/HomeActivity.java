@@ -1,4 +1,4 @@
-package com.example.smarthomeapp;
+package com.example.smarthomeapp.ui.home;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.smarthomeapp.R;
+import com.example.smarthomeapp.ui.admin.AdministrerEnheterActivity;
+import com.example.smarthomeapp.ui.instillinger.SettingsActivity;
+import com.example.smarthomeapp.ui.start.MainActivity;
 
 /**
  * HomeActivity fungerer som hjemsiden i appen.

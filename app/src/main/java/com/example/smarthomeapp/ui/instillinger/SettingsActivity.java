@@ -1,10 +1,12 @@
-package com.example.smarthomeapp;
+package com.example.smarthomeapp.ui.instillinger;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.smarthomeapp.ui.kontroll.AccessControlActivity;
+import com.example.smarthomeapp.R;
 
 /**
  * SettingsActivity håndterer innstillingersiden for appen.

@@ -14,7 +14,7 @@
         android:theme="@style/Theme.SmartHomeApp"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.start.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,19 +23,19 @@
         </activity>
 
         <activity
-                android:name=".RegisterActivity"
+                android:name=".ui.registrering.RegisterActivity"
                 android:exported="false" />
         <activity
-                android:name=".HomeActivity"
+                android:name=".ui.home.HomeActivity"
                 android:exported="false" />
         <activity
-                android:name=".SettingsActivity"
+                android:name=".ui.instillinger.SettingsActivity"
                 android:exported="false" />
         <activity
-                android:name=".AdministrerEnheterActivity"
+                android:name=".ui.admin.AdministrerEnheterActivity"
                 android:exported="false" />
         <activity
-                android:name=".AccessControlActivity"
+                android:name=".ui.kontroll.AccessControlActivity"
                 android:exported="false" >
 
         </activity>

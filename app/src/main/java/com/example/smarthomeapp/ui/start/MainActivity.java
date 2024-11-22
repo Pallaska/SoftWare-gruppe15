@@ -1,4 +1,4 @@
-package com.example.smarthomeapp;
+package com.example.smarthomeapp.ui.start;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import com.example.smarthomeapp.R;
+import com.example.smarthomeapp.auth.Authenticate;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         // For innlogging
         authenticate = new Authenticate("Data.json");
 
-        // Tekstfelt og innloggingsknapp. ID-er skal være like som i xml-filen
+        // Tekstfelt og innloggingsknapp
         EditText usernameField = findViewById(R.id.username);
         EditText passwordField = findViewById(R.id.password);
         Button loginButton = findViewById(R.id.loginButton);

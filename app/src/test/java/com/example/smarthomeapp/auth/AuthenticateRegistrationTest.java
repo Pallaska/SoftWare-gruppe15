@@ -1,4 +1,4 @@
-package com.example.smarthomeapp;
+package com.example.smarthomeapp.auth;
 
 import com.example.smarthomeapp.model.User;
 import org.junit.After;

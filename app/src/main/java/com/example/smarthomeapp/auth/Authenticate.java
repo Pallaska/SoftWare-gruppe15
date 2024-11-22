@@ -1,4 +1,4 @@
-package com.example.smarthomeapp;
+package com.example.smarthomeapp.auth;
 import java.util.List;
 import com.example.smarthomeapp.json.DataKonvertering;
 import com.example.smarthomeapp.model.User;
