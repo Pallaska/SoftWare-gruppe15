@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#B3E7FD"
-        tools:context=".ui.start.MainActivity">
+        tools:context=".MainActivity">
 
     <!-- "Smart Connect" logo -->
     <TextView

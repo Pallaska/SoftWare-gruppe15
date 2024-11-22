@@ -1,11 +1,9 @@
 package com.example.smarthomeapp;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ImageView;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.smarthomeapp.json.DataKonvertering;
 import com.example.smarthomeapp.model.User;

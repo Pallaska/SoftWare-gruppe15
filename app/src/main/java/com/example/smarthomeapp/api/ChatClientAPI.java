@@ -1,5 +1,4 @@
 package com.example.smarthomeapp.api;
-package com.example.smarthomeapp.integrering;
 import okhttp3.*;
 import java.io.IOException;
 import org.json.JSONException;

@@ -33,7 +33,7 @@ public class AuthenticateLoginTest {
         }
 
         // Initialiserer Authenticate med den midlertidige filen
-        authenticate = new Authenticate(tempDataFile.getAbsolutePath());
+        //authenticate = new Authenticate(tempDataFile.getAbsolutePath());
     }
 
     @After

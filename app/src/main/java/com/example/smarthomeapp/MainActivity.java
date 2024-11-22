@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import com.example.smarthomeapp.authentication.Authenticate;
+import com.example.smarthomeapp.auth.Authenticate;
 import com.example.smarthomeapp.json.DataKonvertering;
 import com.example.smarthomeapp.model.Instillinger;
 import java.util.List;
@@ -21,7 +21,6 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
     private Authenticate authenticate;
     private DataKonvertering dataKonvertering;
-
     public static String language;
     public static String loggedInUser;
 
