@@ -5,7 +5,7 @@ import com.example.smarthomeapp.model.User;
 import org.mindrot.jbcrypt.BCrypt;
 
 // Klasse for autentisering, lasting av brukere fra json og validering
-public class Authenticate {
+public class    Authenticate {
 
     DataKonvertering dataKonvertering = new DataKonvertering();
     // Liste som lagrer data om brukere når de er lastet fra json

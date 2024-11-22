@@ -50,7 +50,7 @@
                     android:id="@+id/statusMessage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Registrer ny bruker"
+                    android:text="@string/register_msg1"
                     android:textSize="20sp"
                     android:textColor="#000000"
                     android:fontFamily="@font/poppins_bold"
@@ -62,8 +62,8 @@
                     android:id="@+id/username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Brukernavn"
                     android:background="@drawable/rounded_stroke"
+                    android:hint="@string/register_credentials1"
                     android:singleLine="true"
                     android:backgroundTint="#000000"
                     android:fontFamily="@font/poppins_bold"
@@ -74,8 +74,8 @@
                     android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Passord"
                     android:background="@drawable/rounded_stroke"
+                    android:hint="@string/register_credentials2"
                     android:singleLine="true"
                     android:inputType="textPassword"
                     android:backgroundTint="#000000"
@@ -87,12 +87,64 @@
                     android:id="@+id/birthdate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Fødselsdato (dd/mm/åååå)"
                     android:background="@drawable/rounded_stroke"
+                    android:hint="@string/register_credentials3"
                     android:singleLine="true"
                     android:inputType="none"
                     android:clickable="true"
                     android:focusable="false"
+                    android:backgroundTint="#000000"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_marginBottom="16dp" />
+
+            <!-- Rettigheter Input felt -->
+            <EditText
+                    android:id="@+id/rettigheter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_stroke"
+                    android:hint="@string/register_credentials4"
+                    android:singleLine="true"
+                    android:inputType="text|numberDecimal"
+                    android:backgroundTint="#000000"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_marginBottom="16dp" />
+
+            <!-- E-mail Input felt -->
+            <EditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_stroke"
+                    android:hint="@string/register_credentials5"
+                    android:singleLine="true"
+                    android:inputType="textEmailAddress"
+                    android:backgroundTint="#000000"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_marginBottom="16dp" />
+
+            <!-- Adresse Input felt -->
+            <EditText
+                    android:id="@+id/adresse"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_stroke"
+                    android:hint="@string/register_credentials6"
+                    android:singleLine="true"
+                    android:inputType="textPostalAddress"
+                    android:backgroundTint="#000000"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_marginBottom="16dp" />
+
+            <!-- Telefon Input felt -->
+            <EditText
+                    android:id="@+id/telefon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_stroke"
+                    android:hint="@string/register_credentials7"
+                    android:singleLine="true"
+                    android:inputType="text|number"
                     android:backgroundTint="#000000"
                     android:fontFamily="@font/poppins_bold"
                     android:layout_marginBottom="16dp" />
@@ -102,7 +154,7 @@
                     android:id="@+id/registerButton"
                     android:layout_width="150dp"
                     android:layout_height="48dp"
-                    android:text="Registrer"
+                    android:text="@string/register_credentials8"
                     android:textSize="16sp"
                     android:textAllCaps="false"
                     android:fontFamily="@font/poppins_bold"
@@ -116,8 +168,8 @@
                     android:id="@+id/alreadyHaveAccount"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
-                    android:text="Har du allerede en bruker?"
                     android:fontFamily="@font/poppins_bold"
+                    android:text="@string/register_msg2"
                     android:textSize="16sp"
                     android:textColor="#000000"
                     android:layout_gravity="center_horizontal"

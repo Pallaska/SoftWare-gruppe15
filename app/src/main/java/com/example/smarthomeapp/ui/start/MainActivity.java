@@ -1,20 +1,73 @@
-package com.example.smarthomeapp.ui.start;
+package com.example.smarthomeapp;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import com.example.smarthomeapp.R;
-import com.example.smarthomeapp.auth.Authenticate;
+import com.example.smarthomeapp.authentication.Authenticate;
+import com.example.smarthomeapp.json.DataKonvertering;
+import com.example.smarthomeapp.model.Instillinger;
+import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-
     private Authenticate authenticate;
+    private DataKonvertering dataKonvertering;
+
+    public static String language;
+    public static String loggedInUser;
+
+    // Opprettelse av JSON, bruk av språk-instillinger
+    // Det er viktig å laste det inn før onCreate og ved bruk
+    // av attachBaseContext, som modifiserer konfigurasjonen
+    // til en Activity før den er initialisert
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        // Bruker denne konteksten siden "this" ikke
+        // er initialisert på dette tidspunktet
+        dataKonvertering = new DataKonvertering(newBase);
+
+        // Når appen startes så lages det Data/Logg med enkel struktur
+        // om den ikke finnes allerede
+        dataKonvertering.enkelJsonStruktur("Data.json");
+        dataKonvertering.enkelJsonStruktur("Logg.json");
+
+        // Henter det lagrede språket
+        Instillinger instillinger = null;
+        List<Object> instillingerListe = dataKonvertering.hentFraJson("instillinger", Instillinger.class, "Data.json");
+        if (instillingerListe != null && !instillingerListe.isEmpty()) {
+            Object instillingerObjekt = instillingerListe.get(0);
+            instillinger = (Instillinger) instillingerObjekt;
+        }
+        // Configuration objektet initialiseres utenfor if-statement i
+        // tilfelle instillinger eller instillinger.getLanguage() er null
+        Configuration config = newBase.getResources().getConfiguration();
+        if (instillinger != null && instillinger.getLanguage() != null) {
+            // Bruker det lagrede språket
+            Locale locale = new Locale(instillinger.getLanguage());
+            Locale.setDefault(locale);
+            config.setLocale(locale);
+
+            // Lagt til i variabel for å hente språk i andre activity
+            // uten å måtte hente fra JSON
+            language = instillinger.getLanguage();
+        } else {
+            language = "no";
+            Locale locale = new Locale(language);
+            Locale.setDefault(locale);
+            config.setLocale(locale);
+        }
+
+        super.attachBaseContext(newBase.createConfigurationContext(config));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,27 +81,43 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // For innlogging
-        authenticate = new Authenticate("Data.json");
+        authenticate = new Authenticate(getApplicationContext());
 
-        // Tekstfelt og innloggingsknapp
+        // Tekstfelt og innloggingsknapp. ID-er skal være like som i xml-filen
+        TextView statusMessage = findViewById(R.id.statusMessage);
         EditText usernameField = findViewById(R.id.username);
         EditText passwordField = findViewById(R.id.password);
         Button loginButton = findViewById(R.id.loginButton);
+        TextView registerLink = findViewById(R.id.registerLink);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String username = usernameField.getText().toString();  // Henter brukernavn
-                String password = passwordField.getText().toString();  // Henter passord
+        statusMessage.setText(R.string.login_msg1);
 
-                // Sjekker om brukernavn og passord er riktig
-                if (authenticate.validateLogin(username, password)) {
-                    Toast.makeText(MainActivity.this, "Innlogging vellykket!", Toast.LENGTH_SHORT).show();
-                    // Her skal det legges kode for å navigere til neste skjerm
-                } else {
-                    Toast.makeText(MainActivity.this, "Feil brukernavn eller passord", Toast.LENGTH_SHORT).show();
-                }
+        usernameField.setHint(R.string.login_cred1);
+        passwordField.setHint(R.string.login_cred2);
+
+        loginButton.setText(R.string.login_button);
+        registerLink.setText(R.string.register_msg1);
+
+        loginButton.setOnClickListener(v -> {
+            loggedInUser = usernameField.getText().toString();
+            String username = usernameField.getText().toString();  // Henter brukernavn
+            String password = passwordField.getText().toString();  // Henter passord
+
+            // Sjekker om brukernavn og passord er riktig
+            if (authenticate.validateLogin(username, password)) {
+                Toast.makeText(MainActivity.this, getString(R.string.login_msg3), Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                startActivity(intent);
+            } else {
+                Toast.makeText(MainActivity.this, getString(R.string.login_msg2), Toast.LENGTH_SHORT).show();
             }
+        });
+
+        // Registrering-skjerm
+        registerLink.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+            startActivity(intent);
         });
     }
 }

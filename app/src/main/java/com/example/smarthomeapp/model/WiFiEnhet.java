@@ -66,7 +66,7 @@ public class WiFiEnhet {
 
     @Override
     public String toString() {
-        return "WiFiEnhet{" + "enhetID=" + enhetID + ", enhetNavn=" + enhetNavn + ", enhetProtokoll=" + enhetProtokoll +
+        return "WiFi enheter{" + "enhetID=" + enhetID + ", enhetNavn=" + enhetNavn + ", enhetProtokoll=" + enhetProtokoll +
                 ", enhetIp=" + enhetIp + ", enhetPort=" + enhetPort + ", enhetFunksjon=" + enhetFunksjon + ", enhetSted=" + enhetSted + '}';
     }
 }

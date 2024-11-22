@@ -1,4 +1,5 @@
 package com.example.smarthomeapp.integrering.skanning;
+import androidx.appcompat.app.AppCompatActivity;
 import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceEvent;
 import javax.jmdns.ServiceListener;
@@ -6,8 +7,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.util.List;
 
-public class mDNSSkanning {
-
+public class mDNSSkanning extends AppCompatActivity {
     private JmDNS jmdns;
     private List<ServiceEvent> resultater;
 
